@@ -11,4 +11,5 @@ class AppSvg {
   static const String appBarCameraLogo = "assets/svg/appbar_camera_logo.svg";
   static const String appBarMoreLogo = "assets/svg/appbar_more_logo.svg";
   static const String chatButtonIcon = "assets/svg/caht_button_icon.svg";
+  static const String downArrow = "assets/svg/downArrow.svg";
 }

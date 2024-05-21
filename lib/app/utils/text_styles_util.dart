@@ -21,6 +21,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle rubik15w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Rubik",
+      fontWeight: FontWeight.w400,
+      fontSize: 15.ksp,
+      color: color,
+    );
+  }
+
   static TextStyle rubik15w600({required Color color}) {
     return TextStyle(
       fontFamily: "Rubik",
@@ -35,6 +44,15 @@ class AppTextStyles {
       fontFamily: "Rubik",
       fontWeight: FontWeight.w400,
       fontSize: 20.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle rubik12w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Rubik",
+      fontWeight: FontWeight.w400,
+      fontSize: 12.ksp,
       color: color,
     );
   }
