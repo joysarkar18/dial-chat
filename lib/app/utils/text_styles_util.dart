@@ -30,6 +30,42 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle rubik20w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Rubik",
+      fontWeight: FontWeight.w400,
+      fontSize: 20.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter15w500({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w500,
+      fontSize: 15.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter14w600({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w600,
+      fontSize: 14.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter12w300({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w300,
+      fontSize: 12.ksp,
+      color: color,
+    );
+  }
+
   // static TextStyle uiRegHeader2({Color color = Colors.black}) {
   //   return TextStyle(
   //     fontFamily: "Inter",
