@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/name_email/bindings/name_email_binding.dart';
+import '../modules/name_email/views/name_email_view.dart';
 import '../modules/navBar/bindings/nav_bar_binding.dart';
 import '../modules/navBar/views/nav_bar_view.dart';
 import '../modules/otp/bindings/otp_binding.dart';
@@ -16,7 +18,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.OTP;
+  static const INITIAL = Routes.NAME_EMAIL;
 
   static final routes = [
     GetPage(
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.OTP,
       page: () => const OtpView(),
       binding: OtpBinding(),
+    ),
+    GetPage(
+      name: _Paths.NAME_EMAIL,
+      page: () => const NameEmailView(),
+      binding: NameEmailBinding(),
     ),
   ];
 }

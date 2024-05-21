@@ -19,4 +19,6 @@ class AppStrings {
   static const String resendOTP = "Resend OTP";
   static const String requestNewOTP = "You can request new OTP in ";
   static const String time = "0:13";
+  static const String name = "Name";
+  static const String email = "Email";
 }
