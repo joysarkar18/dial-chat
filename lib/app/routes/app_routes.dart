@@ -7,6 +7,7 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const NAV_BAR = _Paths.NAV_BAR;
   static const PHONENUMBER = _Paths.PHONENUMBER;
+  static const OTP = _Paths.OTP;
 }
 
 abstract class _Paths {
@@ -15,4 +16,5 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const NAV_BAR = '/nav-bar';
   static const PHONENUMBER = '/phonenumber';
+  static const OTP = '/otp';
 }

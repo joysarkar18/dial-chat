@@ -12,4 +12,11 @@ class AppStrings {
       "and calls. You’ll receive your OTP code on it.";
   static const String southAfrica = "South Africa";
   static const String india = "India";
+  static const String verifyingYourNumber = "Verifying your number";
+  static const String otpSentTo = "We have sent OTP code to ";
+  static const String number = "+27 67 307 4029";
+  static const String incorrectNumber = "Incorrect number?";
+  static const String resendOTP = "Resend OTP";
+  static const String requestNewOTP = "You can request new OTP in ";
+  static const String time = "0:13";
 }
