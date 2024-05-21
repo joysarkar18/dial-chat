@@ -31,7 +31,7 @@ class MyButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: AppTextStyles.buttonText(color: textColor),
+            style: AppTextStyles.rubik15w600(color: textColor),
           ),
         ),
       ),

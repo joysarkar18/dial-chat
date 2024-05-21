@@ -1,36 +1,31 @@
-import 'package:dial_chat/app/utils/color_util.dart';
+import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:flutter/material.dart';
-
-double _calculateLetterSpacing(double fontSize, double percentage) {
-  // Calculate the letter spacing based on the percentage of the font size
-  return (fontSize * percentage) / 100.0;
-}
 
 class AppTextStyles {
   //Regular Font
-  static TextStyle uiRegBody({Color? color = Colors.black}) {
+  static TextStyle rubik24w400({required Color color}) {
     return TextStyle(
       fontFamily: "Rubik",
       fontWeight: FontWeight.w400,
-      fontSize: 24,
+      fontSize: 24.ksp,
       color: color,
     );
   }
 
-  static TextStyle termsText({Color? color = Colors.black}) {
+  static TextStyle rubik11w400({required Color color}) {
     return TextStyle(
       fontFamily: "Rubik",
       fontWeight: FontWeight.w400,
-      fontSize: 11,
+      fontSize: 11.ksp,
       color: color,
     );
   }
 
-  static TextStyle buttonText({Color? color = AppColors.black}) {
+  static TextStyle rubik15w600({required Color color}) {
     return TextStyle(
       fontFamily: "Rubik",
       fontWeight: FontWeight.w600,
-      fontSize: 15,
+      fontSize: 15.ksp,
       color: color,
     );
   }
