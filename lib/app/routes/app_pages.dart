@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/about/bindings/about_binding.dart';
 import '../modules/about/views/about_view.dart';
+import '../modules/calls_and_message/bindings/calls_and_message_binding.dart';
+import '../modules/calls_and_message/views/calls_and_message_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/name_email/bindings/name_email_binding.dart';
@@ -22,7 +24,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.ABOUT;
+  static const INITIAL = Routes.CALLS_AND_MESSAGE;
 
   static final routes = [
     GetPage(
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.ABOUT,
       page: () => const AboutView(),
       binding: AboutBinding(),
+    ),
+    GetPage(
+      name: _Paths.CALLS_AND_MESSAGE,
+      page: () => const CallsAndMessageView(),
+      binding: CallsAndMessageBinding(),
     ),
   ];
 }

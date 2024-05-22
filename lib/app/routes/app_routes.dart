@@ -11,6 +11,8 @@ abstract class Routes {
   static const NAME_EMAIL = _Paths.NAME_EMAIL;
   static const SETTINGS = _Paths.SETTINGS;
   static const ABOUT = _Paths.ABOUT;
+  static const STORAGE = _Paths.STORAGE;
+  static const CALLS_AND_MESSAGE = _Paths.CALLS_AND_MESSAGE;
 }
 
 abstract class _Paths {
@@ -23,4 +25,6 @@ abstract class _Paths {
   static const NAME_EMAIL = '/name-email';
   static const SETTINGS = '/settings';
   static const ABOUT = '/about';
+  static const STORAGE = '/storage';
+  static const CALLS_AND_MESSAGE = '/calls-and-message';
 }

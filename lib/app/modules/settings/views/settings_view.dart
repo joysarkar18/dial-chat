@@ -16,6 +16,7 @@ class SettingsView extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        titleSpacing: 10.kw,
         toolbarHeight: 45.kh,
         title: Row(
           children: [

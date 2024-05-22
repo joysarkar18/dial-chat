@@ -45,5 +45,29 @@ class AppStrings {
   static const String appVersion = "Version 1.2.6.9";
   static const String support = "Support";
   static const String termsOfUse = "Terms of use";
-  static const String privacyPolicy = "Privacy Policy ";
+  static const String privacyPolicy = "Privacy Policy";
+  static const String callerID = "Caller ID";
+  static const String allowDialChatTo =
+      "Allow DialChat to recognize caller names for all calls";
+  static const String silenceUnknownCallers = "Silence unknown callers";
+  static const String callsFromUnknownCallers =
+      "Calls from unknown callers will be silenced and will be\nshown in your calls tab and notifications";
+  static const String pressEnterToSend = "Press enter to send";
+  static const String enterKeyWillBeSent =
+      "Enter key will be used to send your messages";
+  static const String clearChatHistory = "Clear chat history";
+  static const String backUpYourChats = "Back up your chats";
+  static const String backUpYourChatsSubtitle =
+      "Back up your chats and files to your cloud\naccount, and restore the back up on your new\nphone ";
+  static const String backUp = "Back up";
+  static const String lastBackUp = "Last Backup: 27/04/2024 16:06";
+  static const String size = "Size: 260 MB";
+  static const String manageStorage = "Manage Storage";
+  static const String googleAccount = "Google Account";
+  static const String exampleEmail = "trotrictetelo@gmail.com";
+  static const String frequency = "Frequency";
+  static const String monthly = "Monthly";
+  static const String includeVideos = "Include videos";
+  static const String thisWillIncludeVideos =
+      "This will include videos in your back up";
 }

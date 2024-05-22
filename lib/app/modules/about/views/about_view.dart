@@ -1,4 +1,3 @@
-import 'package:dial_chat/app/components/button.dart';
 import 'package:dial_chat/app/components/common_image_view.dart';
 import 'package:dial_chat/app/constants/svg_constant.dart';
 import 'package:dial_chat/app/constants/text_constants.dart';
@@ -17,6 +16,7 @@ class AboutView extends GetView<AboutController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        titleSpacing: 10.kw,
         toolbarHeight: 45.kh,
         title: Row(
           children: [

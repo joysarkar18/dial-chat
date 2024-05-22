@@ -138,6 +138,33 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle inter11w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w400,
+      fontSize: 11.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter11w600({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w600,
+      fontSize: 11.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter12w600({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w600,
+      fontSize: 12.ksp,
+      color: color,
+    );
+  }
+
   // static TextStyle uiRegHeader2({Color color = Colors.black}) {
   //   return TextStyle(
   //     fontFamily: "Inter",
