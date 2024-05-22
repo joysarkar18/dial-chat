@@ -21,4 +21,25 @@ class AppStrings {
   static const String time = "0:13";
   static const String name = "Name";
   static const String email = "Email";
+  static const String settings = "Settings";
+  static const String profileName = "Trotric Mabuso";
+  static const String account = "Account";
+  static const String subsciptionsChangeNumber = "Subsciptions, change number";
+  static const String privacy = "Privacy";
+  static const String twoStepVerification =
+      "2-Step verification, block contacts";
+  static const String notifications = "Notifications";
+  static const String ringtonesMessageSound = "Ringtones, message sound";
+  static const String callsAndMessages = "Calls & messages";
+  static const String callerIdBackUps = "Caller ID, back ups";
+  static const String storage = "Storage";
+  static const String dataUsageAutoDownloadSet =
+      "Data usage, auto-download set";
+  static const String language = "Language";
+  static const String english = "English";
+  static const String appTheme = "App Theme";
+  static const String changeAppAppearance = "Change app appearance";
+  static const String about = "About";
+  static const String aboutUsSupport = "About us, support";
+  static const String inviteAFriend = "Invite a friend";
 }

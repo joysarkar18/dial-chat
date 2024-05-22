@@ -12,6 +12,15 @@ class AppSvg {
   static const String appBarMoreLogo = "assets/svg/appbar_more_logo.svg";
   static const String chatButtonIcon = "assets/svg/caht_button_icon.svg";
   static const String downArrow = "assets/svg/downArrow.svg";
-  static const String addPhotoCameraIcon =
-      "assets/svg/add_photo_cameraIcon.svg";
+  static const String addPhotoCameraIcon = "assets/svg/addPhotoCamera.png";
+  static const String backArrow = "assets/svg/arrow_back.svg";
+  static const String accountUserAvatar = "assets/svg/account_user_avatar.svg";
+  static const String lock = "assets/svg/lock.svg";
+  static const String notifications = "assets/svg/notificationIcon.svg";
+  static const String callsAndMessageIcon = "assets/svg/chat.svg";
+  static const String storageIcon = "assets/svg/storage.svg";
+  static const String languageIcon = "assets/svg/language.svg";
+  static const String appThemeIcon = "assets/svg/appTheme.svg";
+  static const String aboutIcon = "assets/svg/about.svg";
+  static const String shareIcon = "assets/svg/share.svg";
 }

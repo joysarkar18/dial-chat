@@ -75,6 +75,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle inter14w500({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w500,
+      fontSize: 14.ksp,
+      color: color,
+    );
+  }
+
   static TextStyle inter14w600({required Color color}) {
     return TextStyle(
       fontFamily: "Inter",
@@ -89,6 +98,24 @@ class AppTextStyles {
       fontFamily: "Inter",
       fontWeight: FontWeight.w300,
       fontSize: 12.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter12w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w400,
+      fontSize: 12.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter13w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w400,
+      fontSize: 13.ksp,
       color: color,
     );
   }

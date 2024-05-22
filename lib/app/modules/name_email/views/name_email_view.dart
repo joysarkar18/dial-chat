@@ -27,11 +27,10 @@ class NameEmailView extends GetView<NameEmailController> {
               width: 70.kh,
               decoration: BoxDecoration(
                   shape: BoxShape.circle, color: context.lightGrey),
-              child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: CommonImageView(
-                  svgPath: AppSvg.appBarCameraLogo,
-                  height: 50,
-                  width: 50,
+                  imagePath: AppSvg.addPhotoCameraIcon,
                 ),
               ),
             ),
