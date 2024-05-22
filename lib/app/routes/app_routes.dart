@@ -10,6 +10,7 @@ abstract class Routes {
   static const OTP = _Paths.OTP;
   static const NAME_EMAIL = _Paths.NAME_EMAIL;
   static const SETTINGS = _Paths.SETTINGS;
+  static const ABOUT = _Paths.ABOUT;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const OTP = '/otp';
   static const NAME_EMAIL = '/name-email';
   static const SETTINGS = '/settings';
+  static const ABOUT = '/about';
 }

@@ -42,4 +42,8 @@ class AppStrings {
   static const String about = "About";
   static const String aboutUsSupport = "About us, support";
   static const String inviteAFriend = "Invite a friend";
+  static const String appVersion = "Version 1.2.6.9";
+  static const String support = "Support";
+  static const String termsOfUse = "Terms of use";
+  static const String privacyPolicy = "Privacy Policy ";
 }

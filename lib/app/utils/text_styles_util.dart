@@ -12,6 +12,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle rubik28w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Rubik",
+      fontWeight: FontWeight.w400,
+      fontSize: 28.ksp,
+      color: color,
+    );
+  }
+
   static TextStyle rubik11w400({required Color color}) {
     return TextStyle(
       fontFamily: "Rubik",
@@ -116,6 +125,15 @@ class AppTextStyles {
       fontFamily: "Inter",
       fontWeight: FontWeight.w400,
       fontSize: 13.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter14w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w400,
+      fontSize: 14.ksp,
       color: color,
     );
   }

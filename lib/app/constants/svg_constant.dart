@@ -23,4 +23,6 @@ class AppSvg {
   static const String appThemeIcon = "assets/svg/appTheme.svg";
   static const String aboutIcon = "assets/svg/about.svg";
   static const String shareIcon = "assets/svg/share.svg";
+  static const String facebookLogo = "assets/svg/facebookLogo.png";
+  static const String titterLogo = "assets/svg/twitterLogo.png";
 }
