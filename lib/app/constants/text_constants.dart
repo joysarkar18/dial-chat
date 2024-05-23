@@ -70,7 +70,7 @@ class AppStrings {
   static const String includeVideos = "Include videos";
   static const String thisWillIncludeVideos =
       "This will include videos in your back up";
-  static const String twoStepVerification = 'Two-Step verifivation';
+  static const String twoStepVerification = 'Two-Step verification';
   static const String createPinCodeToSecureAccount =
       'Create a Pin code to secure your account';
   static const String profilePhoto = "Profile Photo";
@@ -95,4 +95,10 @@ class AppStrings {
   static const String myPostsStories = 'My Posts/Stories';
   static const String blockList = 'Block list';
   static const String blockUnblockYourContacts = 'Block/unblock your contacts';
+  static const String createAUniquePinThatYouWill =
+      'Create a unique PIN that you will';
+  static const String rememberThisWillBeRequired =
+      'remember this will be required';
+  static const String whenRegisteringYourPhone = 'when registering your phone';
+  static const String numberAgain = 'number again';
 }
