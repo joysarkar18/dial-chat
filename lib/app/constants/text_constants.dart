@@ -125,4 +125,15 @@ class AppStrings {
   static const String systemDefault = 'System default';
   static const String light = 'Light';
   static const String dark = 'Dark';
+  static const String chooseALanguage = 'Choose a language';
+  static const String systemDefaultEnglish = 'System default (English)';
+  static const String afrikaans = 'Afrikaans';
+  static const String albanian = 'Albanian';
+  static const String cestina = 'Cestina';
+  static const String hindi = 'Hindi';
+  static const String dutch = 'Dutch';
+  static const String german = 'German';
+  static const String french = 'French';
+  static const String greek = 'Greek';
+  static const String indonesian = 'Indonesian';
 }

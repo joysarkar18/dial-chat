@@ -14,6 +14,8 @@ import '../modules/delete_account/bindings/delete_account_binding.dart';
 import '../modules/delete_account/views/delete_account_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/language/bindings/language_binding.dart';
+import '../modules/language/views/language_view.dart';
 import '../modules/name_email/bindings/name_email_binding.dart';
 import '../modules/name_email/views/name_email_view.dart';
 import '../modules/navBar/bindings/nav_bar_binding.dart';
@@ -36,7 +38,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.APP_THEME;
+  static const INITIAL = Routes.LANGUAGE;
 
   static final routes = [
     GetPage(
@@ -113,6 +115,11 @@ class AppPages {
       name: _Paths.APP_THEME,
       page: () => const AppThemeView(),
       binding: AppThemeBinding(),
+    ),
+    GetPage(
+      name: _Paths.LANGUAGE,
+      page: () => const LanguageView(),
+      binding: LanguageBinding(),
     ),
   ];
 }
