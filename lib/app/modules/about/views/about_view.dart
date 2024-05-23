@@ -18,17 +18,9 @@ class AboutView extends GetView<AboutController> {
       appBar: AppBar(
         titleSpacing: 10.kw,
         toolbarHeight: 45.kh,
-        title: Row(
-          children: [
-            CommonImageView(
-              svgPath: AppSvg.backArrow,
-            ),
-            5.kwidthBox,
-            Text(
-              AppStrings.about,
-              style: AppTextStyles.inter14w500(color: context.black),
-            ),
-          ],
+        title: Text(
+          AppStrings.about,
+          style: AppTextStyles.inter14w500(color: context.black),
         ),
       ),
       body: Column(

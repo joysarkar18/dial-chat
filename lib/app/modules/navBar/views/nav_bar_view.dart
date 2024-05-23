@@ -35,8 +35,11 @@ class NavBarView extends GetView<NavBarController> {
                   svgPath: AppSvg.appBarCameraLogo,
                 ),
                 10.kwidthBox,
-                CommonImageView(
-                  svgPath: AppSvg.appBarMoreLogo,
+                InkWell(
+                  onTap: controller.gotoSettingScreen,
+                  child: CommonImageView(
+                    svgPath: AppSvg.appBarMoreLogo,
+                  ),
                 ),
               ],
             ),

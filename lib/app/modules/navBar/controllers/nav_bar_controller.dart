@@ -1,4 +1,6 @@
 import 'package:dial_chat/app/modules/home/views/home_view.dart';
+import 'package:dial_chat/app/routes/app_pages.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 enum BottomTab {
@@ -16,6 +18,10 @@ class NavBarController extends GetxController {
     BottomTab.calls: const HomeView(),
     BottomTab.posts: const HomeView(),
   };
+
+  void gotoSettingScreen() {
+    Get.toNamed(Routes.SETTINGS);
+  }
 
   void changeTab(BottomTab tab) {
     selectedTab.value = tab;

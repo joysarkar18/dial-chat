@@ -20,17 +20,9 @@ class PrivacyView extends GetView<PrivacyController> {
       appBar: AppBar(
         titleSpacing: 10.kw,
         toolbarHeight: 45.kh,
-        title: Row(
-          children: [
-            CommonImageView(
-              svgPath: AppSvg.backArrow,
-            ),
-            5.kwidthBox,
-            Text(
-              AppStrings.privacy,
-              style: AppTextStyles.inter14w500(color: context.black),
-            ),
-          ],
+        title: Text(
+          AppStrings.privacy,
+          style: AppTextStyles.inter14w500(color: context.black),
         ),
       ),
       body: Padding(

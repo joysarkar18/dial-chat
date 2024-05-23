@@ -79,7 +79,7 @@ class SplashView extends GetView<SplashController> {
                 textColor: context.secondaryBlue,
                 width: 60.w,
                 height: 50.kh,
-                onTap: () {}),
+                onTap: controller.gotoLoginScreen),
           )
         ],
       ),

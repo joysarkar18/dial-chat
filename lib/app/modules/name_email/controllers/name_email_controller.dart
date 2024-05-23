@@ -1,3 +1,4 @@
+import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class NameEmailController extends GetxController {
@@ -17,6 +18,10 @@ class NameEmailController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void gotoNavBar() {
+    Get.offAllNamed(Routes.NAV_BAR);
   }
 
   void increment() => count.value++;

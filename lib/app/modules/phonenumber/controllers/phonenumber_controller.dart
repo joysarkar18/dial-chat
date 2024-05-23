@@ -1,3 +1,4 @@
+import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class PhonenumberController extends GetxController {
@@ -17,6 +18,10 @@ class PhonenumberController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void gotoOtpScreen() {
+    Get.toNamed(Routes.OTP);
   }
 
   void increment() => count.value++;

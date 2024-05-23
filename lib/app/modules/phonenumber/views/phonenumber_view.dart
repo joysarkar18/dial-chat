@@ -86,7 +86,7 @@ class PhonenumberView extends GetView<PhonenumberController> {
               textColor: context.white,
               height: 50.kh,
               width: 180.kw,
-              onTap: () {},
+              onTap: controller.gotoOtpScreen,
             )
           ],
         ),

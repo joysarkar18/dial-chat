@@ -1,3 +1,5 @@
+import 'package:dial_chat/app/routes/app_pages.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -17,6 +19,10 @@ class SplashController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void gotoLoginScreen() {
+    Get.toNamed(Routes.PHONENUMBER);
   }
 
   void increment() => count.value++;

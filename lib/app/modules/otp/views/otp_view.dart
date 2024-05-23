@@ -120,9 +120,12 @@ class OtpView extends GetView<OtpController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                AppStrings.requestNewOTP,
-                style: AppTextStyles.rubik12w400(color: context.black),
+              InkWell(
+                onTap: controller.gotoNameAndEmailScreen,
+                child: Text(
+                  AppStrings.requestNewOTP,
+                  style: AppTextStyles.rubik12w400(color: context.black),
+                ),
               ),
               Text(
                 AppStrings.time,

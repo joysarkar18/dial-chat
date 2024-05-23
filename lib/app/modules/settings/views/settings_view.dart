@@ -18,17 +18,9 @@ class SettingsView extends GetView<SettingsController> {
       appBar: AppBar(
         titleSpacing: 10.kw,
         toolbarHeight: 45.kh,
-        title: Row(
-          children: [
-            CommonImageView(
-              svgPath: AppSvg.backArrow,
-            ),
-            5.kwidthBox,
-            Text(
-              AppStrings.settings,
-              style: AppTextStyles.inter14w500(color: context.black),
-            ),
-          ],
+        title: Text(
+          AppStrings.settings,
+          style: AppTextStyles.inter14w500(color: context.black),
         ),
       ),
       body: SingleChildScrollView(
@@ -91,26 +83,30 @@ class SettingsView extends GetView<SettingsController> {
                 ],
               ),
               20.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.lock,
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.privacy,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.twoStepVerificationBlokContacts,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+              InkWell(
+                onTap: controller.gotoPrivacyScreen,
+                child: Row(
+                  children: [
+                    CommonImageView(
+                      svgPath: AppSvg.lock,
+                    ),
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.privacy,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.twoStepVerificationBlokContacts,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
               Row(
@@ -138,26 +134,30 @@ class SettingsView extends GetView<SettingsController> {
                 ],
               ),
               20.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.callsAndMessageIcon,
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.callsAndMessages,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.callerIdBackUps,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+              InkWell(
+                onTap: controller.gotoCallsAndMessageScreen,
+                child: Row(
+                  children: [
+                    CommonImageView(
+                      svgPath: AppSvg.callsAndMessageIcon,
+                    ),
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.callsAndMessages,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.callerIdBackUps,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
               Row(
@@ -226,26 +226,30 @@ class SettingsView extends GetView<SettingsController> {
                 ],
               ),
               20.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.aboutIcon,
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.about,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.aboutUsSupport,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+              InkWell(
+                onTap: controller.gotoAboutScreen,
+                child: Row(
+                  children: [
+                    CommonImageView(
+                      svgPath: AppSvg.aboutIcon,
+                    ),
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.about,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.aboutUsSupport,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
               Row(

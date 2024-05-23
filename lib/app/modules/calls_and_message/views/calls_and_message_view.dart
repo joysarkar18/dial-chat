@@ -19,17 +19,9 @@ class CallsAndMessageView extends GetView<CallsAndMessageController> {
       appBar: AppBar(
         toolbarHeight: 45.kh,
         titleSpacing: 10.kw,
-        title: Row(
-          children: [
-            CommonImageView(
-              svgPath: AppSvg.backArrow,
-            ),
-            5.kwidthBox,
-            Text(
-              AppStrings.callsAndMessages,
-              style: AppTextStyles.inter14w500(color: context.black),
-            ),
-          ],
+        title: Text(
+          AppStrings.callsAndMessages,
+          style: AppTextStyles.inter14w500(color: context.black),
         ),
       ),
       body: Padding(
