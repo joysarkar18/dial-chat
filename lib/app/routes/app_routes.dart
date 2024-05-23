@@ -18,6 +18,7 @@ abstract class Routes {
   static const ACCOUNT = _Paths.ACCOUNT;
   static const CHANGE_NUMBER = _Paths.CHANGE_NUMBER;
   static const DELETE_ACCOUNT = _Paths.DELETE_ACCOUNT;
+  static const APP_THEME = _Paths.APP_THEME;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const ACCOUNT = '/account';
   static const CHANGE_NUMBER = '/change-number';
   static const DELETE_ACCOUNT = '/delete-account';
+  static const APP_THEME = '/app-theme';
 }

@@ -4,6 +4,8 @@ import '../modules/about/bindings/about_binding.dart';
 import '../modules/about/views/about_view.dart';
 import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
+import '../modules/app_theme/bindings/app_theme_binding.dart';
+import '../modules/app_theme/views/app_theme_view.dart';
 import '../modules/calls_and_message/bindings/calls_and_message_binding.dart';
 import '../modules/calls_and_message/views/calls_and_message_view.dart';
 import '../modules/change_number/bindings/change_number_binding.dart';
@@ -34,7 +36,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.DELETE_ACCOUNT;
+  static const INITIAL = Routes.APP_THEME;
 
   static final routes = [
     GetPage(
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.DELETE_ACCOUNT,
       page: () => const DeleteAccountView(),
       binding: DeleteAccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.APP_THEME,
+      page: () => const AppThemeView(),
+      binding: AppThemeBinding(),
     ),
   ];
 }

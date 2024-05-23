@@ -121,4 +121,8 @@ class AppStrings {
       'will be delete your back ups and disconnect you';
   static const String fromAllDevices = 'from all devices.';
   static const String changeYourNumberInstead = 'Change your number instead';
+  static const String chooseATheme = 'Choose a theme';
+  static const String systemDefault = 'System default';
+  static const String light = 'Light';
+  static const String dark = 'Dark';
 }
