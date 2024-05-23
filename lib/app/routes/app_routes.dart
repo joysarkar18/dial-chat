@@ -13,6 +13,7 @@ abstract class Routes {
   static const ABOUT = _Paths.ABOUT;
   static const STORAGE = _Paths.STORAGE;
   static const CALLS_AND_MESSAGE = _Paths.CALLS_AND_MESSAGE;
+  static const PRIVACY = _Paths.PRIVACY;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const ABOUT = '/about';
   static const STORAGE = '/storage';
   static const CALLS_AND_MESSAGE = '/calls-and-message';
+  static const PRIVACY = '/privacy';
 }

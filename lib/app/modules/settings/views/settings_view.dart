@@ -105,7 +105,7 @@ class SettingsView extends GetView<SettingsController> {
                         style: AppTextStyles.inter13w400(color: context.black),
                       ),
                       Text(
-                        AppStrings.twoStepVerification,
+                        AppStrings.twoStepVerificationBlokContacts,
                         style: AppTextStyles.inter12w400(color: context.grey),
                       ),
                     ],

@@ -26,7 +26,7 @@ class AppStrings {
   static const String account = "Account";
   static const String subsciptionsChangeNumber = "Subsciptions, change number";
   static const String privacy = "Privacy";
-  static const String twoStepVerification =
+  static const String twoStepVerificationBlokContacts =
       "2-Step verification, block contacts";
   static const String notifications = "Notifications";
   static const String ringtonesMessageSound = "Ringtones, message sound";
@@ -70,4 +70,29 @@ class AppStrings {
   static const String includeVideos = "Include videos";
   static const String thisWillIncludeVideos =
       "This will include videos in your back up";
+  static const String twoStepVerification = 'Two-Step verifivation';
+  static const String createPinCodeToSecureAccount =
+      'Create a Pin code to secure your account';
+  static const String profilePhoto = "Profile Photo";
+  static const String letPeopleSeeYourProfile =
+      'Let people see your profile photo who are not in your\ncontact list';
+  static const String setYourDisapperingMessages =
+      'Set your disappearing messages';
+  static const String hours24 = "24 hours";
+  static const String week = "Week";
+  static const String days90 = "90 days";
+  static const String off = "off";
+  static const String disappearingMessage = 'Disappearing message';
+  static const String setYourDisapperingMessagesSubTitle =
+      'Set disappearing messages for your chats';
+  static const String whoCanSeeMyPostsStories = 'Who can see My Posts/Stories';
+  static const String setWhoCanSeeMyPostsStories =
+      'Set who can see My Posts/Stories';
+  static const String everyone = 'Everyone';
+  static const String myContacts = 'My contacts';
+  static const String myContactsExcept = 'My contact except';
+  static const String noOne = 'No one';
+  static const String myPostsStories = 'My Posts/Stories';
+  static const String blockList = 'Block list';
+  static const String blockUnblockYourContacts = 'Block/unblock your contacts';
 }

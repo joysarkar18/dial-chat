@@ -14,6 +14,8 @@ import '../modules/otp/bindings/otp_binding.dart';
 import '../modules/otp/views/otp_view.dart';
 import '../modules/phonenumber/bindings/phonenumber_binding.dart';
 import '../modules/phonenumber/views/phonenumber_view.dart';
+import '../modules/privacy/bindings/privacy_binding.dart';
+import '../modules/privacy/views/privacy_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -24,7 +26,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.CALLS_AND_MESSAGE;
+  static const INITIAL = Routes.PRIVACY;
 
   static final routes = [
     GetPage(
@@ -71,6 +73,11 @@ class AppPages {
       name: _Paths.CALLS_AND_MESSAGE,
       page: () => const CallsAndMessageView(),
       binding: CallsAndMessageBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRIVACY,
+      page: () => const PrivacyView(),
+      binding: PrivacyBinding(),
     ),
   ];
 }
