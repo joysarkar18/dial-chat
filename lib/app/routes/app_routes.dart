@@ -17,6 +17,7 @@ abstract class Routes {
   static const TWO_STEP_VERIFICATION = _Paths.TWO_STEP_VERIFICATION;
   static const ACCOUNT = _Paths.ACCOUNT;
   static const CHANGE_NUMBER = _Paths.CHANGE_NUMBER;
+  static const DELETE_ACCOUNT = _Paths.DELETE_ACCOUNT;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const TWO_STEP_VERIFICATION = '/two-step-verification';
   static const ACCOUNT = '/account';
   static const CHANGE_NUMBER = '/change-number';
+  static const DELETE_ACCOUNT = '/delete-account';
 }

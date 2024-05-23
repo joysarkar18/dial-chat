@@ -8,6 +8,8 @@ import '../modules/calls_and_message/bindings/calls_and_message_binding.dart';
 import '../modules/calls_and_message/views/calls_and_message_view.dart';
 import '../modules/change_number/bindings/change_number_binding.dart';
 import '../modules/change_number/views/change_number_view.dart';
+import '../modules/delete_account/bindings/delete_account_binding.dart';
+import '../modules/delete_account/views/delete_account_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/name_email/bindings/name_email_binding.dart';
@@ -32,7 +34,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.CHANGE_NUMBER;
+  static const INITIAL = Routes.DELETE_ACCOUNT;
 
   static final routes = [
     GetPage(
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.CHANGE_NUMBER,
       page: () => const ChangeNumberView(),
       binding: ChangeNumberBinding(),
+    ),
+    GetPage(
+      name: _Paths.DELETE_ACCOUNT,
+      page: () => const DeleteAccountView(),
+      binding: DeleteAccountBinding(),
     ),
   ];
 }

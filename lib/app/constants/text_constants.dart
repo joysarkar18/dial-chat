@@ -113,4 +113,12 @@ class AppStrings {
       'You will received an OTP via call or SMS';
   static const String yes = 'Yes';
   static const String edit = 'Edit';
+  static const String deletingYourAccountWillDeleteYourData =
+      'Deleting your account will delete all of your data';
+  static const String includdingPurchasesMadeCredit =
+      'including purchases made and credit available and';
+  static const String willBeDeleteYourBackupDisconnectYou =
+      'will be delete your back ups and disconnect you';
+  static const String fromAllDevices = 'from all devices.';
+  static const String changeYourNumberInstead = 'Change your number instead';
 }
