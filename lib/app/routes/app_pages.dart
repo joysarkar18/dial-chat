@@ -2,8 +2,12 @@ import 'package:get/get.dart';
 
 import '../modules/about/bindings/about_binding.dart';
 import '../modules/about/views/about_view.dart';
+import '../modules/account/bindings/account_binding.dart';
+import '../modules/account/views/account_view.dart';
 import '../modules/calls_and_message/bindings/calls_and_message_binding.dart';
 import '../modules/calls_and_message/views/calls_and_message_view.dart';
+import '../modules/change_number/bindings/change_number_binding.dart';
+import '../modules/change_number/views/change_number_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/name_email/bindings/name_email_binding.dart';
@@ -28,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.TWO_STEP_VERIFICATION;
+  static const INITIAL = Routes.CHANGE_NUMBER;
 
   static final routes = [
     GetPage(
@@ -85,6 +89,16 @@ class AppPages {
       name: _Paths.TWO_STEP_VERIFICATION,
       page: () => const TwoStepVerificationView(),
       binding: TwoStepVerificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACCOUNT,
+      page: () => const AccountView(),
+      binding: AccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_NUMBER,
+      page: () => const ChangeNumberView(),
+      binding: ChangeNumberBinding(),
     ),
   ];
 }

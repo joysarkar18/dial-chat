@@ -15,6 +15,8 @@ abstract class Routes {
   static const CALLS_AND_MESSAGE = _Paths.CALLS_AND_MESSAGE;
   static const PRIVACY = _Paths.PRIVACY;
   static const TWO_STEP_VERIFICATION = _Paths.TWO_STEP_VERIFICATION;
+  static const ACCOUNT = _Paths.ACCOUNT;
+  static const CHANGE_NUMBER = _Paths.CHANGE_NUMBER;
 }
 
 abstract class _Paths {
@@ -31,4 +33,6 @@ abstract class _Paths {
   static const CALLS_AND_MESSAGE = '/calls-and-message';
   static const PRIVACY = '/privacy';
   static const TWO_STEP_VERIFICATION = '/two-step-verification';
+  static const ACCOUNT = '/account';
+  static const CHANGE_NUMBER = '/change-number';
 }

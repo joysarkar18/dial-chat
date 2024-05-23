@@ -101,4 +101,16 @@ class AppStrings {
       'remember this will be required';
   static const String whenRegisteringYourPhone = 'when registering your phone';
   static const String numberAgain = 'number again';
+  static const String accounts = 'Accounts';
+  static const String subscriptions = 'Subscriptions';
+  static const String changeNumber = 'Change number';
+  static const String deleteAccount = 'Delete account';
+  static const String currentNumber = 'Current number';
+  static const String myNewNumberIs = 'My new number is:';
+  static const String isThisYourCorrectPhoneNumber =
+      'Is this your correct phone number?';
+  static const String youWillReceivedAnOtpViaCallOrSms =
+      'You will received an OTP via call or SMS';
+  static const String yes = 'Yes';
+  static const String edit = 'Edit';
 }
