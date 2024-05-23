@@ -136,4 +136,7 @@ class AppStrings {
   static const String french = 'French';
   static const String greek = 'Greek';
   static const String indonesian = 'Indonesian';
+  static const String notificationSound = 'Notification Sound';
+  static const String defaultSpaceline = 'Default (Spaceline)';
+  static const String vibrateWhenRinging = 'Vibrate when ringing';
 }
