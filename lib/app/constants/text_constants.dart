@@ -139,4 +139,21 @@ class AppStrings {
   static const String notificationSound = 'Notification Sound';
   static const String defaultSpaceline = 'Default (Spaceline)';
   static const String vibrateWhenRinging = 'Vibrate when ringing';
+  static const String mediaAutoDownloadSettings =
+      'Media auto download settings';
+  static const String autoDownloadMediaOverMobileData =
+      'Auto download media over mobile data';
+  static const String allowAutoDownloadOfPhotosOverMobileData =
+      'Allow automatic download of photos, videos, files and\nGIFs over mobile networks';
+  static const String autoDownloadMediaOverWifi =
+      'Auto download media when connected to\nWiFi';
+
+  static const String allowAutoDownloadOfPhotosOverWifi =
+      'Allow automatic download of photos, videos, files and\nGIFs over WiFI connection';
+  static const String autoPlayVideos = 'Auto play videos';
+  static const String allowVideosToPlayAutomaticOnceDownloaded =
+      'Allow videos to play automatic once downloaded';
+  static const String restrictDataUsage = 'Restrict data usage';
+  static const String dialChatWillOptimizeMinimalData =
+      'DialChat will optimize for minimal data usage on mobile networks';
 }

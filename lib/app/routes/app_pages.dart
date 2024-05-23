@@ -32,6 +32,8 @@ import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/storage/bindings/storage_binding.dart';
+import '../modules/storage/views/storage_view.dart';
 import '../modules/two_step_verification/bindings/two_step_verification_binding.dart';
 import '../modules/two_step_verification/views/two_step_verification_view.dart';
 
@@ -40,7 +42,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.NOTIFICATION;
+  static const INITIAL = Routes.STORAGE;
 
   static final routes = [
     GetPage(
@@ -127,6 +129,11 @@ class AppPages {
       name: _Paths.NOTIFICATION,
       page: () => const NotificationView(),
       binding: NotificationBinding(),
+    ),
+    GetPage(
+      name: _Paths.STORAGE,
+      page: () => const StorageView(),
+      binding: StorageBinding(),
     ),
   ];
 }
