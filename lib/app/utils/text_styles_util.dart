@@ -39,6 +39,16 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle rubik15w400italic({required Color color}) {
+    return TextStyle(
+      fontFamily: "Rubik",
+      fontWeight: FontWeight.w400,
+      fontSize: 15.ksp,
+      fontStyle: FontStyle.italic,
+      color: color,
+    );
+  }
+
   static TextStyle rubik15w600({required Color color}) {
     return TextStyle(
       fontFamily: "Rubik",
@@ -178,6 +188,42 @@ class AppTextStyles {
     return TextStyle(
       fontFamily: "Inter",
       fontWeight: FontWeight.w600,
+      fontSize: 12.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter16w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w400,
+      fontSize: 16.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter24w700({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w700,
+      fontSize: 24.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter24w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w400,
+      fontSize: 24.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter12w500({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w500,
       fontSize: 12.ksp,
       color: color,
     );

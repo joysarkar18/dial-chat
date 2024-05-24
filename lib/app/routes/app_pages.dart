@@ -14,8 +14,12 @@ import '../modules/delete_account/bindings/delete_account_binding.dart';
 import '../modules/delete_account/views/delete_account_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/internationalplans/bindings/internationalplans_binding.dart';
+import '../modules/internationalplans/views/internationalplans_view.dart';
 import '../modules/language/bindings/language_binding.dart';
 import '../modules/language/views/language_view.dart';
+import '../modules/localplans/bindings/localplans_binding.dart';
+import '../modules/localplans/views/localplans_view.dart';
 import '../modules/name_email/bindings/name_email_binding.dart';
 import '../modules/name_email/views/name_email_view.dart';
 import '../modules/navBar/bindings/nav_bar_binding.dart';
@@ -34,6 +38,8 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/storage/bindings/storage_binding.dart';
 import '../modules/storage/views/storage_view.dart';
+import '../modules/subscription/bindings/subscription_binding.dart';
+import '../modules/subscription/views/subscription_view.dart';
 import '../modules/two_step_verification/bindings/two_step_verification_binding.dart';
 import '../modules/two_step_verification/views/two_step_verification_view.dart';
 
@@ -42,7 +48,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.STORAGE;
+  static const INITIAL = Routes.SUBSCRIPTION;
 
   static final routes = [
     GetPage(
@@ -134,6 +140,21 @@ class AppPages {
       name: _Paths.STORAGE,
       page: () => const StorageView(),
       binding: StorageBinding(),
+    ),
+    GetPage(
+      name: _Paths.SUBSCRIPTION,
+      page: () => const SubscriptionView(),
+      binding: SubscriptionBinding(),
+    ),
+    GetPage(
+      name: _Paths.LOCALPLANS,
+      page: () => const LocalplansView(),
+      binding: LocalplansBinding(),
+    ),
+    GetPage(
+      name: _Paths.INTERNATIONALPLANS,
+      page: () => const InternationalplansView(),
+      binding: InternationalplansBinding(),
     ),
   ];
 }

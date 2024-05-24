@@ -156,4 +156,15 @@ class AppStrings {
   static const String restrictDataUsage = 'Restrict data usage';
   static const String dialChatWillOptimizeMinimalData =
       'DialChat will optimize for minimal data usage on mobile networks';
+  static const String voice = 'Voice';
+  static const String walletBalance = 'Wallet balance';
+  static const String r = 'R  0.00';
+  // static const String balanceInDigit = '0.00';
+  static const String topUp = 'Top up';
+  static const String localPlans = 'Local Plans';
+  static const String internationalPlans = 'International Plans';
+  static const String buyNow = 'Buy now';
+  static const String forDays30 = 'For 30 Days';
+  static const String min30 = '30 min';
+  static const String r18 = 'R18.49';
 }

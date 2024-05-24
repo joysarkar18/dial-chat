@@ -21,6 +21,9 @@ abstract class Routes {
   static const APP_THEME = _Paths.APP_THEME;
   static const LANGUAGE = _Paths.LANGUAGE;
   static const NOTIFICATION = _Paths.NOTIFICATION;
+  static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
+  static const LOCALPLANS = _Paths.LOCALPLANS;
+  static const INTERNATIONALPLANS = _Paths.INTERNATIONALPLANS;
 }
 
 abstract class _Paths {
@@ -43,4 +46,7 @@ abstract class _Paths {
   static const APP_THEME = '/app-theme';
   static const LANGUAGE = '/language';
   static const NOTIFICATION = '/notification';
+  static const SUBSCRIPTION = '/subscription';
+  static const LOCALPLANS = '/localplans';
+  static const INTERNATIONALPLANS = '/internationalplans';
 }
