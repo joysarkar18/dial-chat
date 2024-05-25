@@ -26,4 +26,6 @@ extension ColorUtil on BuildContext {
       dynamicColour(light: HexColor("#D9D9D9"), dark: HexColor("#D9D9D9"));
   Color get lightGrey_2 =>
       dynamicColour(light: HexColor("#F0EFEF"), dark: HexColor("#F0EFEF"));
+  Color get lightTextBlack =>
+      dynamicColour(light: HexColor("#444343"), dark: HexColor("#444343"));
 }

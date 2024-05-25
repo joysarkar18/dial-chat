@@ -61,26 +61,30 @@ class SettingsView extends GetView<SettingsController> {
                 ),
               ),
               40.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.accountUserAvatar,
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.account,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.subsciptionsChangeNumber,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+              InkWell(
+                onTap: controller.gotoAccountScreen,
+                child: Row(
+                  children: [
+                    CommonImageView(
+                      svgPath: AppSvg.accountUserAvatar,
+                    ),
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.account,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.subsciptionsChangeNumber,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
               InkWell(
@@ -109,29 +113,33 @@ class SettingsView extends GetView<SettingsController> {
                 ),
               ),
               20.kheightBox,
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 2.0),
-                    child: CommonImageView(
-                      svgPath: AppSvg.notifications,
+              InkWell(
+                onTap: controller.gotoNotificationScreen,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 2.0),
+                      child: CommonImageView(
+                        svgPath: AppSvg.notifications,
+                      ),
                     ),
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.notifications,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.ringtonesMessageSound,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.notifications,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.ringtonesMessageSound,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
               InkWell(
@@ -160,70 +168,82 @@ class SettingsView extends GetView<SettingsController> {
                 ),
               ),
               20.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.storageIcon,
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.storage,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.dataUsageAutoDownloadSet,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+              InkWell(
+                onTap: controller.gotoStorageScreen,
+                child: Row(
+                  children: [
+                    CommonImageView(
+                      svgPath: AppSvg.storageIcon,
+                    ),
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.storage,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.dataUsageAutoDownloadSet,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.languageIcon,
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.language,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.english,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+              InkWell(
+                onTap: controller.gotoLanguageScreen,
+                child: Row(
+                  children: [
+                    CommonImageView(
+                      svgPath: AppSvg.languageIcon,
+                    ),
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.language,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.english,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.appThemeIcon,
-                  ),
-                  20.kwidthBox,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.appTheme,
-                        style: AppTextStyles.inter13w400(color: context.black),
-                      ),
-                      Text(
-                        AppStrings.changeAppAppearance,
-                        style: AppTextStyles.inter12w400(color: context.grey),
-                      ),
-                    ],
-                  )
-                ],
+              InkWell(
+                onTap: controller.gotoAppThemeScreen,
+                child: Row(
+                  children: [
+                    CommonImageView(
+                      svgPath: AppSvg.appThemeIcon,
+                    ),
+                    20.kwidthBox,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.appTheme,
+                          style:
+                              AppTextStyles.inter13w400(color: context.black),
+                        ),
+                        Text(
+                          AppStrings.changeAppAppearance,
+                          style: AppTextStyles.inter12w400(color: context.grey),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
               20.kheightBox,
               InkWell(

@@ -6,10 +6,14 @@ import '../modules/account/bindings/account_binding.dart';
 import '../modules/account/views/account_view.dart';
 import '../modules/app_theme/bindings/app_theme_binding.dart';
 import '../modules/app_theme/views/app_theme_view.dart';
+import '../modules/calls/bindings/calls_binding.dart';
+import '../modules/calls/views/calls_view.dart';
 import '../modules/calls_and_message/bindings/calls_and_message_binding.dart';
 import '../modules/calls_and_message/views/calls_and_message_view.dart';
 import '../modules/change_number/bindings/change_number_binding.dart';
 import '../modules/change_number/views/change_number_view.dart';
+import '../modules/chat/bindings/chat_binding.dart';
+import '../modules/chat/views/chat_view.dart';
 import '../modules/delete_account/bindings/delete_account_binding.dart';
 import '../modules/delete_account/views/delete_account_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -30,6 +34,8 @@ import '../modules/otp/bindings/otp_binding.dart';
 import '../modules/otp/views/otp_view.dart';
 import '../modules/phonenumber/bindings/phonenumber_binding.dart';
 import '../modules/phonenumber/views/phonenumber_view.dart';
+import '../modules/posts/bindings/posts_binding.dart';
+import '../modules/posts/views/posts_view.dart';
 import '../modules/privacy/bindings/privacy_binding.dart';
 import '../modules/privacy/views/privacy_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
@@ -48,7 +54,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SUBSCRIPTION;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -155,6 +161,21 @@ class AppPages {
       name: _Paths.INTERNATIONALPLANS,
       page: () => const InternationalplansView(),
       binding: InternationalplansBinding(),
+    ),
+    GetPage(
+      name: _Paths.CALLS,
+      page: () => const CallsView(),
+      binding: CallsBinding(),
+    ),
+    GetPage(
+      name: _Paths.POSTS,
+      page: () => const PostsView(),
+      binding: PostsBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT,
+      page: () => const ChatView(),
+      binding: ChatBinding(),
     ),
   ];
 }

@@ -27,15 +27,18 @@ class AccountView extends GetView<AccountController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             25.kheightBox,
-            Text(
-              AppStrings.subscriptions,
-              style: AppTextStyles.inter14w400(color: context.black),
+            InkWell(
+              onTap: controller.gotoSubscriptionScreen,
+              child: Text(
+                AppStrings.subscriptions,
+                style: AppTextStyles.inter14w400(color: context.black),
+              ),
             ),
             5.kheightBox,
             const Divider(),
             5.kheightBox,
             InkWell(
-              onTap: () {},
+              onTap: controller.gotoChangeNumberScreen,
               child: Text(
                 AppStrings.changeNumber,
                 style: AppTextStyles.inter14w400(color: context.black),
@@ -44,9 +47,12 @@ class AccountView extends GetView<AccountController> {
             5.kheightBox,
             const Divider(),
             5.kheightBox,
-            Text(
-              AppStrings.deleteAccount,
-              style: AppTextStyles.inter14w400(color: context.black),
+            InkWell(
+              onTap: controller.gotoDeleteAccountScreen,
+              child: Text(
+                AppStrings.deleteAccount,
+                style: AppTextStyles.inter14w400(color: context.black),
+              ),
             ),
             5.kheightBox,
             const Divider(),

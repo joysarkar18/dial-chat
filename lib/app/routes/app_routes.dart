@@ -24,6 +24,9 @@ abstract class Routes {
   static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
   static const LOCALPLANS = _Paths.LOCALPLANS;
   static const INTERNATIONALPLANS = _Paths.INTERNATIONALPLANS;
+  static const CALLS = _Paths.CALLS;
+  static const POSTS = _Paths.POSTS;
+  static const CHAT = _Paths.CHAT;
 }
 
 abstract class _Paths {
@@ -49,4 +52,7 @@ abstract class _Paths {
   static const SUBSCRIPTION = '/subscription';
   static const LOCALPLANS = '/localplans';
   static const INTERNATIONALPLANS = '/internationalplans';
+  static const CALLS = '/calls';
+  static const POSTS = '/posts';
+  static const CHAT = '/chat';
 }

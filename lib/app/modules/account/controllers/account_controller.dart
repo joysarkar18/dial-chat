@@ -1,3 +1,4 @@
+import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class AccountController extends GetxController {
@@ -17,6 +18,18 @@ class AccountController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void gotoSubscriptionScreen() {
+    Get.toNamed(Routes.SUBSCRIPTION);
+  }
+
+  void gotoChangeNumberScreen() {
+    Get.toNamed(Routes.CHANGE_NUMBER);
+  }
+
+  void gotoDeleteAccountScreen() {
+    Get.toNamed(Routes.DELETE_ACCOUNT);
   }
 
   void increment() => count.value++;

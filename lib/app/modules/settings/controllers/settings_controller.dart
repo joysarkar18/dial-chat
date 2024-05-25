@@ -32,5 +32,25 @@ class SettingsController extends GetxController {
     Get.toNamed(Routes.ABOUT);
   }
 
+  void gotoAccountScreen() {
+    Get.toNamed(Routes.ACCOUNT);
+  }
+
+  void gotoNotificationScreen() {
+    Get.toNamed(Routes.NOTIFICATION);
+  }
+
+  void gotoStorageScreen() {
+    Get.toNamed(Routes.STORAGE);
+  }
+
+  void gotoLanguageScreen() {
+    Get.toNamed(Routes.LANGUAGE);
+  }
+
+  void gotoAppThemeScreen() {
+    Get.toNamed(Routes.APP_THEME);
+  }
+
   void increment() => count.value++;
 }

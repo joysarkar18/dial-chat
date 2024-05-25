@@ -167,4 +167,7 @@ class AppStrings {
   static const String forDays30 = 'For 30 Days';
   static const String min30 = '30 min';
   static const String r18 = 'R18.49';
+  static const String recentCalls = "Recent Calls";
+  static const String viewAll = "View All";
+  static const String contacts = "Contacts";
 }

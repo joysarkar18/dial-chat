@@ -1,4 +1,6 @@
+import 'package:dial_chat/app/modules/calls/views/calls_view.dart';
 import 'package:dial_chat/app/modules/home/views/home_view.dart';
+import 'package:dial_chat/app/modules/posts/views/posts_view.dart';
 import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,8 +17,8 @@ class NavBarController extends GetxController {
   var selectedTab = BottomTab.chats.obs;
   var pages = {
     BottomTab.chats: const HomeView(),
-    BottomTab.calls: const HomeView(),
-    BottomTab.posts: const HomeView(),
+    BottomTab.calls: const CallsView(),
+    BottomTab.posts: const PostsView(),
   };
 
   void gotoSettingScreen() {
