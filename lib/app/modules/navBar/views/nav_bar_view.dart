@@ -45,13 +45,13 @@ class NavBarView extends GetView<NavBarController> {
             ),
           ),
           bottomNavigationBar: BottomAppBar(
-              height: 80.kh,
+              height: 60.kh,
               color: Colors.white,
               padding: const EdgeInsets.all(0),
               child: Column(
                 children: [
                   SizedBox(
-                    height: 80.kh,
+                    height: 60.kh,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -128,12 +128,13 @@ class BottomNavItem extends StatelessWidget {
               CommonImageView(
                 svgPath: icon,
                 // height: 41.kh,
+                height: isSelected ? 30 : 26,
                 // width: 41.kw,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: Text(label,
-                    style: AppTextStyles.inter15w500(
+                    style: AppTextStyles.inter12w500(
                       color: isSelected ? context.secondaryBlue : context.black,
                     )),
               )
