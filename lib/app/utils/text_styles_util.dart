@@ -229,6 +229,15 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle inter10w500({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w500,
+      fontSize: 10.ksp,
+      color: color,
+    );
+  }
+
   // static TextStyle uiRegHeader2({Color color = Colors.black}) {
   //   return TextStyle(
   //     fontFamily: "Inter",
