@@ -5,6 +5,7 @@ import 'package:dial_chat/app/utils/text_styles_util.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../controllers/otp_controller.dart';
 
@@ -44,73 +45,33 @@ class OtpView extends GetView<OtpController> {
           60.kheightBox,
 
 //  ----------------OTP----------------------------------------------------
-          SizedBox(
-            width: 50.w,
-            child: Row(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(
-                    3,
-                    (index) {
-                      return Container(
-                        height: 22.kh,
-                        width: 30.kh,
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom:
-                                    BorderSide(width: 1, color: context.grey))),
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-                          maxLength: 1,
-                          decoration: InputDecoration(
-                            hintText: '*',
-                            hintStyle:
-                                TextStyle(color: context.grey, fontSize: 20),
-                            counterText: "",
-                            border: InputBorder.none,
-                          ),
-                          onChanged: (value) {},
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                20.kwidthBox,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: List.generate(
-                    3,
-                    (index) {
-                      return Container(
-                        height: 22.kh,
-                        width: 30.kh,
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom:
-                                    BorderSide(width: 1, color: context.grey))),
-                        child: TextField(
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-                          maxLength: 1,
-                          decoration: InputDecoration(
-                            hintText: '*',
-                            hintStyle:
-                                TextStyle(color: context.grey, fontSize: 20),
-                            counterText: "",
-                            border: InputBorder.none,
-                          ),
-                          onChanged: (value) {},
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: PinCodeTextField(
+              appContext: context,
+              length: 6,
+              keyboardType: TextInputType.number,
+              animationType: AnimationType.fade,
+              pinTheme: PinTheme(
+                shape: PinCodeFieldShape.box,
+                borderRadius: BorderRadius.circular(5),
+                fieldHeight: 50,
+                fieldWidth: 40,
+                activeFillColor: Colors.white,
+                selectedFillColor: Colors.white,
+                inactiveFillColor: Colors.white,
+                activeColor: context.secondaryBlue,
+                selectedColor: context.primaryBlue,
+                inactiveColor: Colors.grey,
+              ),
+              animationDuration: Duration(milliseconds: 300),
+              enableActiveFill: true,
+              beforeTextPaste: (text) {
+                // Allow pasting
+                return true;
+              },
             ),
           ),
-
 // ---------------------------------------------------------------
           60.kheightBox,
           Text(

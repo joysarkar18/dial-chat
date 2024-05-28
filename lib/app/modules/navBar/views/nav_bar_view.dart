@@ -46,7 +46,7 @@ class NavBarView extends GetView<NavBarController> {
           ),
           bottomNavigationBar: BottomAppBar(
               height: 60.kh,
-              color: Colors.white,
+              color: context.navBarColor,
               padding: const EdgeInsets.all(0),
               child: Column(
                 children: [

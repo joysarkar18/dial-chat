@@ -17,9 +17,15 @@ extension ColorUtil on BuildContext {
   Color get secondaryBlue =>
       dynamicColour(light: HexColor("#1ACEDA"), dark: HexColor("#1ACEDA"));
   Color get white =>
-      dynamicColour(light: HexColor("#FFFFFF"), dark: HexColor("#FFFFFF"));
+      dynamicColour(light: HexColor("#FFFFFF"), dark: HexColor("#000000"));
+  Color get chatBoxColor =>
+      dynamicColour(light: HexColor("#FFFFFF"), dark: HexColor("#2f3035"));
+  Color get chatBackgroundColor =>
+      dynamicColour(light: HexColor("#FFFFFF"), dark: HexColor("#343c3c"));
+  Color get navBarColor =>
+      dynamicColour(light: HexColor("#FFFFFF"), dark: HexColor("#0E0E10"));
   Color get black =>
-      dynamicColour(light: HexColor("#000000"), dark: HexColor("#000000"));
+      dynamicColour(light: HexColor("#000000"), dark: HexColor("#FFFFFF"));
   Color get grey =>
       dynamicColour(light: HexColor("#8A8A8A"), dark: HexColor("#8A8A8A"));
   Color get lightGrey =>
@@ -27,5 +33,5 @@ extension ColorUtil on BuildContext {
   Color get lightGrey_2 =>
       dynamicColour(light: HexColor("#F0EFEF"), dark: HexColor("#F0EFEF"));
   Color get lightTextBlack =>
-      dynamicColour(light: HexColor("#444343"), dark: HexColor("#444343"));
+      dynamicColour(light: HexColor("#444343"), dark: HexColor("#FFFFFF"));
 }

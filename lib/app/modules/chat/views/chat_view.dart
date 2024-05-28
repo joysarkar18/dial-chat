@@ -29,6 +29,7 @@ class ChatView extends GetView<ChatController> {
 
     final now = DateTime.now();
     return Scaffold(
+      backgroundColor: context.chatBackgroundColor,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -71,34 +72,34 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Hey, how have you been?',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text: 'I\'ve been good, just busy with work. How about you?',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                 ),
                 BubbleNormal(
                   text: 'Same here, lots of projects to complete.',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text: 'Have you seen the latest movie that came out?',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -106,18 +107,18 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Yes, it was amazing! The storyline was so gripping.',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text:
                       'I totally agree! We should watch the next one together.',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -125,17 +126,17 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Definitely, let\'s plan for it.',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text: 'How about this weekend?',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -143,11 +144,11 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Sounds perfect! See you then.',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 DateChip(
@@ -156,7 +157,7 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Hey, did you finish the report?',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -164,17 +165,17 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Yes, I just sent it over to you. Check your email.',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text: 'Got it, thanks! It looks great.',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -183,17 +184,17 @@ class ChatView extends GetView<ChatController> {
                   text:
                       'No problem! Let me know if there’s anything else you need.',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text: 'Sure, will do. Have a good day!',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -204,17 +205,17 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Hey, are you joining the team meeting later?',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text: 'Yes, I’ll be there. Do you have the agenda?',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -222,17 +223,17 @@ class ChatView extends GetView<ChatController> {
                 BubbleNormal(
                   text: 'Yes, I’ll forward it to you now.',
                   isSender: false,
-                  color: Color(0xFF1B97F3),
+                  color: Color(0xFFE8E8EE),
                   tail: true,
                   textStyle: TextStyle(
                     fontSize: 16,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
                 BubbleNormal(
                   text: 'Great, thanks!',
                   isSender: true,
-                  color: Color(0xFFE8E8EE),
+                  color: Color(0xFF048A93),
                   tail: true,
                   sent: true,
                   delivered: true,
@@ -242,6 +243,7 @@ class ChatView extends GetView<ChatController> {
             ),
           ),
           MessageBar(
+            messageBarColor: context.chatBoxColor,
             onSend: (message) {
               // This is where you handle sending the message
               print(message);
@@ -251,7 +253,7 @@ class ChatView extends GetView<ChatController> {
               InkWell(
                 child: Icon(
                   Icons.add,
-                  color: Colors.black,
+                  color: context.black,
                   size: 24,
                 ),
                 onTap: () {},
