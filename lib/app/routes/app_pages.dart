@@ -18,6 +18,8 @@ import '../modules/delete_account/bindings/delete_account_binding.dart';
 import '../modules/delete_account/views/delete_account_view.dart';
 import '../modules/dial_pad/bindings/dial_pad_binding.dart';
 import '../modules/dial_pad/views/dial_pad_view.dart';
+import '../modules/dialing/bindings/dialing_binding.dart';
+import '../modules/dialing/views/dialing_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/internationalplans/bindings/internationalplans_binding.dart';
@@ -56,7 +58,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.DIAL_PAD;
+  static const INITIAL = Routes.CHAT;
 
   static final routes = [
     GetPage(
@@ -183,6 +185,11 @@ class AppPages {
       name: _Paths.DIAL_PAD,
       page: () => const DialPadView(),
       binding: DialPadBinding(),
+    ),
+    GetPage(
+      name: _Paths.DIALING,
+      page: () => const DialingView(),
+      binding: DialingBinding(),
     ),
   ];
 }

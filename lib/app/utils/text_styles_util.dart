@@ -265,6 +265,24 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle roboto24w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontWeight: FontWeight.w400,
+      fontSize: 24.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle roboto12w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontWeight: FontWeight.w400,
+      fontSize: 12.ksp,
+      color: color,
+    );
+  }
+
   // static TextStyle uiRegHeader2({Color color = Colors.black}) {
   //   return TextStyle(
   //     fontFamily: "Inter",

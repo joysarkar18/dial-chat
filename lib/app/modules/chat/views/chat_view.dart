@@ -1,6 +1,9 @@
 import 'package:chat_bubbles/bubbles/bubble_normal.dart';
 import 'package:chat_bubbles/date_chips/date_chip.dart';
 import 'package:chat_bubbles/message_bars/message_bar.dart';
+import 'package:dial_chat/app/components/common_image_view.dart';
+import 'package:dial_chat/app/constants/svg_constant.dart';
+import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
@@ -59,6 +62,51 @@ class ChatView extends GetView<ChatController> {
             ),
           ],
         ),
+        actions: <Widget>[
+          // InkWell(
+          //   onTap: () {},
+          //   child: CommonImageView(
+          //     svgPath: AppSvg.appBarCameraLogo,
+          //     height: 28,
+          //     width: 28,
+          //   ),
+          // ),
+          // 13.kwidthBox,
+          IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt)),
+          InkWell(
+            onTap: () => Get.toNamed(Routes.DIALING),
+            child: CommonImageView(
+              svgPath: AppSvg.callIcon,
+              height: 28,
+              width: 28,
+            ),
+          ),
+          PopupMenuButton<String>(
+            onSelected: (String result) {},
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'report',
+                child: Text('Report'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'block',
+                child: Text('Block'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'media_links_files',
+                child: Text('Media, links and files'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'mute_notifications',
+                child: Text('Mute notifications'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'disappearing_messages',
+                child: Text('Disappearing messages'),
+              ),
+            ],
+          ),
+        ],
       ),
       body: Stack(
         children: [
