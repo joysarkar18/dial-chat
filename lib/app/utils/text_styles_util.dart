@@ -238,6 +238,33 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle roboto21w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontWeight: FontWeight.w400,
+      fontSize: 21.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle roboto11w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontWeight: FontWeight.w400,
+      fontSize: 11.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle roboto24w700({required Color color}) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontWeight: FontWeight.w700,
+      fontSize: 24.ksp,
+      color: color,
+    );
+  }
+
   // static TextStyle uiRegHeader2({Color color = Colors.black}) {
   //   return TextStyle(
   //     fontFamily: "Inter",

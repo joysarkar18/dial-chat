@@ -16,6 +16,8 @@ import '../modules/chat/bindings/chat_binding.dart';
 import '../modules/chat/views/chat_view.dart';
 import '../modules/delete_account/bindings/delete_account_binding.dart';
 import '../modules/delete_account/views/delete_account_view.dart';
+import '../modules/dial_pad/bindings/dial_pad_binding.dart';
+import '../modules/dial_pad/views/dial_pad_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/internationalplans/bindings/internationalplans_binding.dart';
@@ -54,7 +56,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.DIAL_PAD;
 
   static final routes = [
     GetPage(
@@ -176,6 +178,11 @@ class AppPages {
       name: _Paths.CHAT,
       page: () => const ChatView(),
       binding: ChatBinding(),
+    ),
+    GetPage(
+      name: _Paths.DIAL_PAD,
+      page: () => const DialPadView(),
+      binding: DialPadBinding(),
     ),
   ];
 }

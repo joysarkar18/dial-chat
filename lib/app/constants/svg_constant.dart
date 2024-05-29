@@ -28,4 +28,7 @@ class AppSvg {
   static const String plushIcon = "assets/svg/plushIcon.svg";
   static const String upArrow = "assets/svg/uparrow.svg";
   static const String callButton = "assets/svg/call_button.svg";
+  static const String dial = "assets/svg/dial.svg";
+  static const String dialPadChatIcon = "assets/svg/dialPadChatIcon.svg";
+  static const String delete = "assets/svg/Delete.svg";
 }

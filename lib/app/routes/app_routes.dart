@@ -27,6 +27,7 @@ abstract class Routes {
   static const CALLS = _Paths.CALLS;
   static const POSTS = _Paths.POSTS;
   static const CHAT = _Paths.CHAT;
+  static const DIAL_PAD = _Paths.DIAL_PAD;
 }
 
 abstract class _Paths {
@@ -55,4 +56,5 @@ abstract class _Paths {
   static const CALLS = '/calls';
   static const POSTS = '/posts';
   static const CHAT = '/chat';
+  static const DIAL_PAD = '/dial-pad';
 }
