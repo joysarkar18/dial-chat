@@ -1,23 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppThemeController extends GetxController {
-  //TODO: Implement AppThemeController
+  var themeMode = ThemeMode.system.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void setLightTheme() {
+    themeMode.value = ThemeMode.light;
+    Get.changeThemeMode(ThemeMode.light);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void setDarkTheme() {
+    themeMode.value = ThemeMode.dark;
+    Get.changeThemeMode(ThemeMode.dark);
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void setSystemTheme() {
+    themeMode.value = ThemeMode.system;
+    Get.changeThemeMode(ThemeMode.system);
   }
-
-  void increment() => count.value++;
 }
