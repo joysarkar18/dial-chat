@@ -23,11 +23,12 @@ class HomeView extends GetView<HomeController> {
               color: context.secondaryBlue,
               borderRadius: BorderRadius.circular(12)),
           child: IconButton(
-            icon: CommonImageView(
-              svgPath: AppSvg.chatButtonIcon,
-            ),
-            onPressed: () {},
-          ),
+              icon: CommonImageView(
+                svgPath: AppSvg.chatButtonIcon,
+              ),
+              onPressed: () {
+                Get.toNamed(Routes.DIAL_PAD);
+              }),
         ),
         body: Padding(
           padding: EdgeInsets.only(

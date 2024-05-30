@@ -35,6 +35,7 @@ class ChatView extends GetView<ChatController> {
 
     final now = DateTime.now();
     return Scaffold(
+   
       backgroundColor: context.chatBackgroundColor,
       appBar: AppBar(
         leading: IconButton(
@@ -75,15 +76,11 @@ class ChatView extends GetView<ChatController> {
           //   ),
           // ),
           // 13.kwidthBox,
-          IconButton(onPressed: () {}, icon: const Icon(Icons.camera_alt)),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.video_call_sharp)),
           InkWell(
-            onTap: () => Get.toNamed(Routes.DIALING),
-            child: CommonImageView(
-              svgPath: AppSvg.callIcon,
-              height: 28,
-              width: 28,
-            ),
-          ),
+              onTap: () => Get.toNamed(Routes.DIALING),
+              child: Icon(Icons.phone)),
           PopupMenuButton<String>(
             onSelected: (String result) {},
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[

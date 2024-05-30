@@ -132,8 +132,7 @@ class DialPadView extends GetView<DialPadController> {
             child: InkWell(
                 onTap: () => controller.deleteLastCharacter(),
                 child: CommonImageView(
-                  svgPath: AppSvg.delete,
-                )),
+                    svgPath: AppSvg.delete, svgColor: Color(0xff1ACEDA))),
           ),
         ],
       ),
