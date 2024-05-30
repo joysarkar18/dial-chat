@@ -2,9 +2,12 @@ import 'package:chat_bubbles/bubbles/bubble_normal.dart';
 import 'package:chat_bubbles/date_chips/date_chip.dart';
 import 'package:chat_bubbles/message_bars/message_bar.dart';
 import 'package:dial_chat/app/components/common_image_view.dart';
+import 'package:dial_chat/app/components/message_input_bar.dart';
 import 'package:dial_chat/app/constants/svg_constant.dart';
 import 'package:dial_chat/app/routes/app_pages.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
@@ -290,35 +293,106 @@ class ChatView extends GetView<ChatController> {
               ],
             ),
           ),
-          MessageBar(
-            messageBarColor: context.chatBoxColor,
-            onSend: (message) {
-              // This is where you handle sending the message
-              print(message);
-              // After sending the message, clear the input
-            },
-            actions: [
-              InkWell(
-                child: Icon(
-                  Icons.add,
-                  color: context.black,
-                  size: 24,
-                ),
-                onTap: () {},
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 8, right: 8),
-                child: InkWell(
-                  child: Icon(
-                    Icons.camera_alt,
-                    color: Colors.green,
-                    size: 24,
-                  ),
-                  onTap: () {},
-                ),
-              ),
-            ],
-          ),
+          const MessageInputBar(),
+          // Positioned(
+          //   bottom: 0,
+          //   child: Container(
+          //     width: 100.w,
+          //     height: 70.kh,
+          //     color: Colors.white,
+          //     // child: MessageBar(),
+          //     child: Padding(
+          //       padding: const EdgeInsets.all(2.0),
+          //       child: Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //         children: [
+          //           5.kwidthBox,
+          //           Container(
+          //               decoration: BoxDecoration(
+          //                   shape: BoxShape.circle,
+          //                   border: Border.all(width: 1)),
+          //               child: const Icon(
+          //                 Icons.add,
+          //                 size: 20,
+          //               )),
+          //           Expanded(
+          //             child: Padding(
+          //               padding: const EdgeInsets.all(8.0),
+          //               child: Stack(
+          //                 children: [
+          //                   Container(
+          //                     decoration: BoxDecoration(
+          //                       borderRadius: BorderRadius.circular(30),
+          //                       color: context.lightGrey_2,
+          //                     ),
+          //                     child: Padding(
+          //                       padding: EdgeInsets.symmetric(horizontal: 10.0),
+          //                       child: Column(
+          //                         children: [
+          //                           Expanded(
+          //                             child: TextFormField(
+          //                               maxLines: null, // Set this
+          //                               expands: true, // and this
+          //                               keyboardType: TextInputType.multiline,
+          //                               decoration: InputDecoration(
+          //                                   border: InputBorder.none,
+          //                                   hintText: 'Message..'),
+          //                             ),
+          //                           ),
+          //                         ],
+          //                       ),
+          //                     ),
+          //                   ),
+          //                   Positioned(
+          //                     right: 10,
+          //                     top: 10,
+          //                     child: Icon(Icons.abc),
+          //                   ),
+          //                   Positioned(
+          //                     right: 40,
+          //                     top: 10,
+          //                     child: Icon(Icons.abc),
+          //                   ),
+          //                 ],
+          //               ),
+          //             ),
+          //           ),
+          //           const Icon(Icons.send),
+          //           10.kwidthBox,
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          // MessageBar(
+          //   messageBarColor: context.chatBoxColor,
+          //   onSend: (message) {
+          //     // This is where you handle sending the message
+          //     print(message);
+          //     // After sending the message, clear the input
+          //   },
+          //   actions: [
+          //     InkWell(
+          //       child: Icon(
+          //         Icons.add,
+          //         color: context.black,
+          //         size: 24,
+          //       ),
+          //       onTap: () {},
+          //     ),
+          //     // Padding(
+          //     //   padding: EdgeInsets.only(left: 8, right: 8),
+          //     //   child: InkWell(
+          //     //     child: Icon(
+          //     //       Icons.camera_alt,
+          //     //       color: Colors.green,
+          //     //       size: 24,
+          //     //     ),
+          //     //     onTap: () {},
+          //     //   ),
+          //     // ),
+          //   ],
+          // ),
         ],
       ),
     );
