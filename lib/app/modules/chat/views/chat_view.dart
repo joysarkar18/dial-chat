@@ -289,7 +289,7 @@ class ChatView extends GetView<ChatController> {
                   sent: true,
                   delivered: true,
                 ),
-                90.kheightBox,
+                130.kheightBox,
               ],
             ),
           ),

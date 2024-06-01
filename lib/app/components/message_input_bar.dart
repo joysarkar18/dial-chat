@@ -97,7 +97,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
                         child: Row(
                           children: [
                             SizedBox(
-                              width: 250.kw,
+                              width: 240.kw,
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     right: 8.0, left: 10.0),
@@ -131,6 +131,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
                                         width: 20,
                                       ),
                                     ),
+                                    10.kwidthBox,
                                   ],
                                 ),
                               ],
