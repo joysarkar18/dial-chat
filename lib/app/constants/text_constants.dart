@@ -170,4 +170,5 @@ class AppStrings {
   static const String recentCalls = "Recent Calls";
   static const String viewAll = "View All";
   static const String contacts = "Contacts";
+  static const String dialing = "Dialing";
 }

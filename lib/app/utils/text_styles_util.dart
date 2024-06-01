@@ -238,6 +238,24 @@ class AppTextStyles {
     );
   }
 
+  static TextStyle inter24w500({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w500,
+      fontSize: 24.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle inter36w600({required Color color}) {
+    return TextStyle(
+      fontFamily: "Inter",
+      fontWeight: FontWeight.w600,
+      fontSize: 36.ksp,
+      color: color,
+    );
+  }
+
   static TextStyle roboto21w400({required Color color}) {
     return TextStyle(
       fontFamily: "Roboto",
@@ -279,6 +297,15 @@ class AppTextStyles {
       fontFamily: "Roboto",
       fontWeight: FontWeight.w400,
       fontSize: 12.ksp,
+      color: color,
+    );
+  }
+
+  static TextStyle roboto70w400({required Color color}) {
+    return TextStyle(
+      fontFamily: "Roboto",
+      fontWeight: FontWeight.w400,
+      fontSize: 70.ksp,
       color: color,
     );
   }

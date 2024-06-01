@@ -1,5 +1,6 @@
 import 'package:dial_chat/app/components/common_image_view.dart';
 import 'package:dial_chat/app/constants/svg_constant.dart';
+import 'package:dial_chat/app/constants/text_constants.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
@@ -15,129 +16,81 @@ class DialingView extends GetView<DialingController> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: context.secondaryBlue,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            60.kheightBox,
-            Center(
-              child: Text(
-                'Calling...',
-                style: AppTextStyles.roboto24w400(color: context.white),
-              ),
-            ),
-            40.kheightBox,
-            Text(
-              'Joy Sarkar',
-              style: AppTextStyles.roboto24w700(color: context.white),
-            ),
-            200.kheightBox,
-            Center(
-              child: SizedBox(
-                height: 300.kh,
-                width: 320.kw,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            CommonImageView(
-                              svgPath: AppSvg.addCall,
-                            ),
-                            15.kheightBox,
-                            Text(
-                              'Add call',
-                              style: AppTextStyles.roboto12w400(
-                                  color: context.white),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            CommonImageView(
-                              svgPath: AppSvg.holdCall,
-                            ),
-                            12.kheightBox,
-                            Text(
-                              'Hold call',
-                              style: AppTextStyles.roboto12w400(
-                                  color: context.white),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            CommonImageView(
-                              svgPath: AppSvg.bluetooth,
-                            ),
-                            12.kheightBox,
-                            Text(
-                              'Bluetooth',
-                              style: AppTextStyles.roboto12w400(
-                                  color: context.white),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    40.kheightBox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            CommonImageView(
-                              svgPath: AppSvg.speaker,
-                            ),
-                            15.kheightBox,
-                            Text(
-                              'Speaker',
-                              style: AppTextStyles.roboto12w400(
-                                  color: context.white),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            CommonImageView(
-                              svgPath: AppSvg.muteCall,
-                            ),
-                            19.kheightBox,
-                            Text(
-                              'Mute',
-                              style: AppTextStyles.roboto12w400(
-                                  color: context.white),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            CommonImageView(
-                              svgPath: AppSvg.keypad,
-                            ),
-                            19.kheightBox,
-                            Text(
-                              'Keypad',
-                              style: AppTextStyles.roboto12w400(
-                                  color: context.white),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () => Get.back(),
-                      child: CommonImageView(
-                        svgPath: AppSvg.endCall,
-                      ),
-                    )
-                  ],
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                10.kheightBox,
+                Text(
+                  AppStrings.dialing,
+                  style: AppTextStyles.inter24w500(color: context.white),
                 ),
-              ),
-            )
-          ],
+                10.kheightBox,
+                Text(
+                  'Shaun',
+                  style: AppTextStyles.inter36w600(color: context.white),
+                ),
+                Text(
+                  AppStrings.number,
+                  style: AppTextStyles.inter24w400(color: context.white),
+                ),
+                60.kheightBox,
+                Container(
+                  height: 80.kh,
+                  decoration: BoxDecoration(
+                      color: context.white,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CommonImageView(
+                        svgPath: AppSvg.speaker,
+                      ),
+                      CommonImageView(
+                        svgPath: AppSvg.muteCall,
+                      ),
+                      CommonImageView(
+                        svgPath: AppSvg.addCall,
+                      ),
+                      CommonImageView(
+                        svgPath: AppSvg.keypad,
+                      ),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                const Spacer(),
+                Center(
+                  child: Container(
+                    height: 150.kh,
+                    width: 150.kw,
+                    decoration: BoxDecoration(
+                        color: context.lightGreen, shape: BoxShape.circle),
+                    child: Center(
+                      child: Text(
+                        'S',
+                        style: AppTextStyles.roboto70w400(color: context.white),
+                      ),
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                InkWell(
+                  onTap: () => Get.back(),
+                  child: Center(
+                    child: CommonImageView(
+                      svgPath: AppSvg.endCall,
+                      height: 100.kh,
+                    ),
+                  ),
+                ),
+                const Spacer(),
+              ],
+            ),
+          ),
         ));
   }
 }
