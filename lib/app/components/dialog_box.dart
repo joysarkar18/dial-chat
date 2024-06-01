@@ -3,6 +3,7 @@ import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyDialogBox extends StatelessWidget {
   final String title;
@@ -20,55 +21,73 @@ class MyDialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor: context.white,
-      title: Text(
-        title,
-        style: AppTextStyles.inter14w400(color: context.black),
-      ),
-      content: SizedBox(
-        height: 100.kh,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+    return Dialog(
+      child: Container(
+          height: 200.kh,
+          width: 300.kw,
+          decoration: BoxDecoration(
+              color: context.white, borderRadius: BorderRadius.circular(10)),
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomCheckBox(),
-                5.kwidthBox,
-                Text(option1,
-                    style: AppTextStyles.inter11w400(color: context.black)),
+                // 20.kheightBox,
+                Text(
+                  title,
+                  style: AppTextStyles.inter14w400(color: context.black),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0, top: 18),
+                  child: SizedBox(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const CustomCheckBox(),
+                            5.kwidthBox,
+                            Text(option1,
+                                style: AppTextStyles.inter11w400(
+                                    color: context.black)),
+                          ],
+                        ),
+                        8.kheightBox,
+                        Row(
+                          children: [
+                            const CustomCheckBox(),
+                            5.kwidthBox,
+                            Text(option2,
+                                style: AppTextStyles.inter11w400(
+                                    color: context.black)),
+                          ],
+                        ),
+                        8.kheightBox,
+                        Row(
+                          children: [
+                            const CustomCheckBox(),
+                            5.kwidthBox,
+                            Text(option3,
+                                style: AppTextStyles.inter11w400(
+                                    color: context.black)),
+                          ],
+                        ),
+                        8.kheightBox,
+                        Row(
+                          children: [
+                            const CustomCheckBox(),
+                            5.kwidthBox,
+                            Text(option4,
+                                style: AppTextStyles.inter11w400(
+                                    color: context.black)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
-            4.kheightBox,
-            Row(
-              children: [
-                const CustomCheckBox(),
-                5.kwidthBox,
-                Text(option2,
-                    style: AppTextStyles.inter11w400(color: context.black)),
-              ],
-            ),
-            4.kheightBox,
-            Row(
-              children: [
-                const CustomCheckBox(),
-                5.kwidthBox,
-                Text(option3,
-                    style: AppTextStyles.inter11w400(color: context.black)),
-              ],
-            ),
-            4.kheightBox,
-            Row(
-              children: [
-                const CustomCheckBox(),
-                5.kwidthBox,
-                Text(option4,
-                    style: AppTextStyles.inter11w400(color: context.black)),
-              ],
-            ),
-          ],
-        ),
-      ),
+          )),
     );
   }
 }
