@@ -31,11 +31,15 @@ extension ColorUtil on BuildContext {
   Color get lightGrey =>
       dynamicColour(light: HexColor("#D9D9D9"), dark: HexColor("#D9D9D9"));
   Color get lightGrey_2 =>
-      dynamicColour(light: HexColor("#F0EFEF"), dark: HexColor("#F0EFEF"));
+      dynamicColour(light: HexColor("#F0EFEF"), dark: HexColor("#343c3c"));
   Color get lightTextBlack =>
       dynamicColour(light: HexColor("#444343"), dark: HexColor("#FFFFFF"));
   Color get green =>
       dynamicColour(light: HexColor("#1BD259"), dark: HexColor("#1BD259"));
+  Color get sendIcon =>
+      dynamicColour(light: HexColor("#696969"), dark: HexColor("#DCDCDC"));
+  Color get sendBackground =>
+      dynamicColour(light: HexColor("#1ACEDA"), dark: HexColor("#1ACEDA"));
   Color get lightGreen =>
       dynamicColour(light: HexColor("#7AF1A2"), dark: HexColor("#7AF1A2"));
 }

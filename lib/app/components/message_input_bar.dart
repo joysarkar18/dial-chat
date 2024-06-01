@@ -1,6 +1,7 @@
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MessageInputBar extends StatefulWidget {
   const MessageInputBar({super.key});
@@ -66,8 +67,8 @@ class _MessageInputBarState extends State<MessageInputBar> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
         width: MediaQuery.of(context).size.width,
-        height: _containerHeight + 40,
-        color: Colors.white,
+        height: _containerHeight + 30,
+        color: context.chatBoxColor,
         child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: Row(
@@ -75,13 +76,15 @@ class _MessageInputBarState extends State<MessageInputBar> {
             children: [
               5.kwidthBox,
               Container(
+                padding: EdgeInsets.all(1),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(width: 1),
+                  border: Border.all(width: 1, color: context.sendIcon),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.add,
                   size: 20,
+                  color: context.sendIcon,
                 ),
               ),
               Expanded(
@@ -97,7 +100,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
                         child: Row(
                           children: [
                             SizedBox(
-                              width: 240.kw,
+                              width: 62.w,
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     right: 8.0, left: 10.0),
@@ -151,7 +154,16 @@ class _MessageInputBarState extends State<MessageInputBar> {
                     // mic action
                   }
                 },
-                child: Icon(_isFocused ? Icons.send : Icons.mic),
+                child: Container(
+                  height: 36,
+                  width: 36,
+                  decoration: BoxDecoration(
+                      color: context.sendBackground, shape: BoxShape.circle),
+                  child: Icon(
+                    _isFocused ? Icons.send : Icons.mic,
+                    color: Colors.white70,
+                  ),
+                ),
               ),
               10.kwidthBox,
             ],

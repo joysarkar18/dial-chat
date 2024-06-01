@@ -115,17 +115,61 @@ class CallsView extends GetView<CallsController> {
                               height: 40,
                               width: 40,
                               decoration: BoxDecoration(
-                                  shape: BoxShape.circle, color: context.grey),
+                                shape: BoxShape.circle,
+                                color: Color(0xffCFCFCF),
+                              ),
                               child: Center(
                                 child: CommonImageView(
-                                  svgPath: AppSvg.callIcon,
+                                  svgPath: AppSvg.videoIconChat,
                                   height: 24,
-                                  svgColor: context.white,
+                                  svgColor: Colors.white60,
                                 ),
                               ),
                             )
                           ],
-                        )
+                        ),
+                        10.kwidthBox,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xffCFCFCF),
+                              ),
+                              child: Center(
+                                child: CommonImageView(
+                                  svgPath: AppSvg.callIcon,
+                                  height: 24,
+                                  svgColor: Colors.white60,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        10.kwidthBox,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xffCFCFCF),
+                              ),
+                              child: Center(
+                                child: CommonImageView(
+                                  svgPath: AppSvg.dialChatIcon,
+                                  height: 24,
+                                  // svgColor: context.white,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   )),
@@ -172,6 +216,13 @@ class CallsView extends GetView<CallsController> {
                           ],
                         ),
                         const Spacer(),
+                        TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Invite",
+                              style: AppTextStyles.inter12w500(
+                                  color: context.secondaryBlue),
+                            )),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -184,7 +235,7 @@ class CallsView extends GetView<CallsController> {
                                 child: CommonImageView(
                                   svgPath: AppSvg.callIcon,
                                   height: 24,
-                                  svgColor: context.white,
+                                  svgColor: Colors.white60,
                                 ),
                               ),
                             )

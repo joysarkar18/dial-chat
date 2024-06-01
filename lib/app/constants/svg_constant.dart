@@ -38,4 +38,9 @@ class AppSvg {
   static const String muteCall = "assets/svg/muteCall.svg";
   static const String keypad = "assets/svg/keypad.svg";
   static const String endCall = "assets/svg/endCall.svg";
+  static const callIconChat = "assets/svg/phone-rounded-svgrepo-com.svg";
+  static const String videoIconChat = "assets/svg/video-svgrepo-com.svg";
+  static const String dial_call = "assets/svg/dial_call.svg";
+  static const String dialCallPage = "assets/svg/dial_call_page.svg";
+  static const String dialChatIcon = "assets/svg/DialChat_icon.svg";
 }
