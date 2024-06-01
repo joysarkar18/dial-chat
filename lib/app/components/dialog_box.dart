@@ -3,7 +3,6 @@ import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class MyDialogBox extends StatelessWidget {
   final String title;
@@ -23,7 +22,7 @@ class MyDialogBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-          height: 200.kh,
+          height: 220.kh,
           width: 300.kw,
           decoration: BoxDecoration(
               color: context.white, borderRadius: BorderRadius.circular(10)),
