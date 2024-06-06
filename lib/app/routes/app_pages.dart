@@ -14,6 +14,8 @@ import '../modules/change_number/bindings/change_number_binding.dart';
 import '../modules/change_number/views/change_number_view.dart';
 import '../modules/chat/bindings/chat_binding.dart';
 import '../modules/chat/views/chat_view.dart';
+import '../modules/chatCall/bindings/chat_call_binding.dart';
+import '../modules/chatCall/views/chat_call_view.dart';
 import '../modules/delete_account/bindings/delete_account_binding.dart';
 import '../modules/delete_account/views/delete_account_view.dart';
 import '../modules/dial_pad/bindings/dial_pad_binding.dart';
@@ -190,6 +192,11 @@ class AppPages {
       name: _Paths.DIALING,
       page: () => const DialingView(),
       binding: DialingBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHAT_CALL,
+      page: () => const ChatCallView(),
+      binding: ChatCallBinding(),
     ),
   ];
 }

@@ -83,7 +83,7 @@ class ChatView extends GetView<ChatController> {
                 svgColor: context.sendIcon,
               )),
           InkWell(
-              onTap: () => Get.toNamed(Routes.DIALING),
+              onTap: () => Get.toNamed(Routes.CHAT_CALL),
               child: CommonImageView(
                 svgPath: AppSvg.callIconChat,
                 svgColor: context.sendIcon,
