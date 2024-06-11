@@ -1,4 +1,4 @@
-package com.example.dial_chat
+package com.dialchat.msgr
 
 import io.flutter.embedding.android.FlutterActivity
 

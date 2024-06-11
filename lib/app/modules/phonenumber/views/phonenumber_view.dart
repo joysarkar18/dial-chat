@@ -17,7 +17,8 @@ class PhonenumberView extends GetView<PhonenumberController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Column(
+          child: Obx(
+        () => Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             120.kheightBox,
@@ -38,36 +39,35 @@ class PhonenumberView extends GetView<PhonenumberController> {
             ),
             60.kheightBox,
             const CustomDropdown(),
-            60.kheightBox,
+            40.kheightBox,
             SizedBox(
               width: 250.kw,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
-                    width: 30.kw,
-                    height: 20.kh,
+                    padding: EdgeInsets.only(bottom: 6),
                     decoration: BoxDecoration(
                         border: Border(
                             bottom:
                                 BorderSide(width: 1.2, color: context.grey))),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: '+27',
-                          hintStyle:
-                              AppTextStyles.rubik15w400(color: context.grey)),
+                    child: Text(
+                      controller.dialCode.value,
+                      style: AppTextStyles.rubik15w400(color: context.grey),
                     ),
                   ),
-                  40.kwidthBox,
+                  20.kwidthBox,
                   Expanded(
                     child: Container(
                       // width: 70.kw,
-                      height: 20.kh,
+                      height: 22.kh,
                       decoration: BoxDecoration(
                           border: Border(
                               bottom:
                                   BorderSide(width: 1.2, color: context.grey))),
                       child: TextFormField(
+                        controller: controller.phoneNumberController,
+                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: '67 307 4029',
@@ -86,11 +86,11 @@ class PhonenumberView extends GetView<PhonenumberController> {
               textColor: context.white,
               height: 50.kh,
               width: 180.kw,
-              onTap: controller.gotoOtpScreen,
+              onTap: controller.singupOrLogin,
             )
           ],
         ),
-      ),
+      )),
     );
   }
 }

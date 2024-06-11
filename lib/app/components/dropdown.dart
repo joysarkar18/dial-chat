@@ -1,82 +1,65 @@
-import 'package:dial_chat/app/constants/svg_constant.dart';
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:dial_chat/app/modules/phonenumber/controllers/phonenumber_controller.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:country_pickers/country.dart';
+import 'package:country_pickers/country_pickers.dart';
+import 'package:country_pickers/utils/utils.dart';
+import 'package:get/get.dart';
 
 class CustomDropdown extends StatefulWidget {
-  const CustomDropdown({super.key});
+  const CustomDropdown({Key? key}) : super(key: key);
 
   @override
   _CustomDropdownState createState() => _CustomDropdownState();
 }
 
 class _CustomDropdownState extends State<CustomDropdown> {
-  String _selectedCountry = 'South Africa';
+  late Country _selectedCountry;
 
-  final List<Map<String, String>> _countries = [
-    {'name': 'South Africa', 'flag': 'assets/svg/southAfrica.png'},
-    {'name': 'Canada', 'flag': 'assets/svg/southAfrica.png'},
-    {'name': 'Mexico', 'flag': 'assets/svg/southAfrica.png'},
-    {'name': 'India', 'flag': 'assets/svg/southAfrica.png'},
-    {'name': 'America', 'flag': 'assets/svg/southAfrica.png'},
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _selectedCountry = CountryPickerUtils.getCountryByIsoCode('ZA');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250.kw,
-      height: 40.kh,
+      width: 70.w,
+      height: 50,
       decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: context.grey, width: 1))),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: _selectedCountry,
-          icon: Padding(
-            padding: const EdgeInsets.only(left: 18.0),
-            child: SvgPicture.asset(AppSvg.downArrow),
-          ),
-          onChanged: (String? newValue) {
-            setState(() {
-              _selectedCountry = newValue!;
-            });
-          },
-          selectedItemBuilder: (BuildContext context) {
-            return _countries.map<Widget>((country) {
-              return Row(
-                children: [
-                  Image.asset(
-                    country['flag']!,
-                    width: 20,
-                    height: 20,
-                  ),
-                  18.kwidthBox,
-                  Text(_selectedCountry),
-                ],
-              );
-            }).toList();
-          },
-          items: _countries
-              .map<DropdownMenuItem<String>>((Map<String, String> country) {
-            return DropdownMenuItem<String>(
-              value: country['name'],
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    country['flag']!,
-                    width: 24,
-                    height: 16,
-                  ),
-                  10.kwidthBox,
-                  Text(country['name']!),
-                ],
-              ),
-            );
-          }).toList(),
-          dropdownColor: Colors.white,
-          menuMaxHeight: 300,
-        ),
+        border: Border(bottom: BorderSide(color: Colors.grey, width: 1)),
       ),
+      child: CountryCodePicker(
+        onChanged: (value) {
+          Get.find<PhonenumberController>().changeDialCode(value.dialCode!);
+        },
+        // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+        initialSelection: 'IN',
+        favorite: ['+91', 'IN'],
+
+        backgroundColor: context.white,
+        dialogBackgroundColor: context.chatBackgroundColor,
+        // optional. Shows only country name and flag
+        showCountryOnly: true,
+        // optional. Shows only country name and flag when popup is closed.
+        showOnlyCountryWhenClosed: true,
+
+        // optional. aligns the flag and the Text left
+        alignLeft: true,
+      ),
+    );
+  }
+
+  Widget _buildDropdownItem(Country country) {
+    return Row(
+      children: <Widget>[
+        CountryPickerUtils.getDefaultFlagImage(country),
+        SizedBox(width: 8.0),
+        Text(country.name),
+      ],
     );
   }
 }

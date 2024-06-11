@@ -1,4 +1,5 @@
 import 'package:dial_chat/app/constants/text_constants.dart';
+import 'package:dial_chat/app/modules/phonenumber/controllers/phonenumber_controller.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
@@ -14,7 +15,8 @@ class OtpView extends GetView<OtpController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: Obx(
+      () => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           100.kheightBox,
@@ -33,14 +35,17 @@ class OtpView extends GetView<OtpController> {
                 style: AppTextStyles.rubik12w400(color: context.black),
               ),
               Text(
-                AppStrings.number,
+                "${Get.find<PhonenumberController>().dialCode.value} ${Get.find<PhonenumberController>().phoneNumberController.text}",
                 style: AppTextStyles.rubik12w400(color: context.black),
               ),
             ],
           ),
-          Text(
-            AppStrings.incorrectNumber,
-            style: AppTextStyles.rubik12w400(color: context.secondaryBlue),
+          InkWell(
+            onTap: Get.back,
+            child: Text(
+              AppStrings.incorrectNumber,
+              style: AppTextStyles.rubik12w400(color: context.secondaryBlue),
+            ),
           ),
           60.kheightBox,
 
@@ -48,6 +53,7 @@ class OtpView extends GetView<OtpController> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: PinCodeTextField(
+              controller: controller.otpController,
               appContext: context,
               length: 6,
               keyboardType: TextInputType.number,
@@ -70,32 +76,43 @@ class OtpView extends GetView<OtpController> {
                 // Allow pasting
                 return true;
               },
+              onCompleted: (otp) {
+                controller.verifyOtp(otp);
+              },
             ),
           ),
-// ---------------------------------------------------------------
           60.kheightBox,
-          Text(
-            AppStrings.resendOTP,
-            style: AppTextStyles.rubik12w600(color: context.secondaryBlue),
+          InkWell(
+            onTap: () {
+              if (controller.countdown.value <= 0) {
+                controller.resendOtp();
+              }
+            },
+            child: Text(
+              AppStrings.resendOTP,
+              style: AppTextStyles.rubik12w600(
+                  color: controller.countdown.value == 0
+                      ? context.secondaryBlue
+                      : context.grey),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: controller.gotoNameAndEmailScreen,
                 child: Text(
                   AppStrings.requestNewOTP,
                   style: AppTextStyles.rubik12w400(color: context.black),
                 ),
               ),
               Text(
-                AppStrings.time,
+                "0." + controller.countdown.value.toString(),
                 style: AppTextStyles.rubik12w400(color: context.black),
               ),
             ],
           ),
         ],
       ),
-    );
+    ));
   }
 }

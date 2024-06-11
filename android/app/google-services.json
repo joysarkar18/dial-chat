@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "516052926710",
+    "project_id": "dial-chat-48084",
+    "storage_bucket": "dial-chat-48084.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516052926710:android:0b764edd2d162846022cd7",
+        "android_client_info": {
+          "package_name": "com.dialchat.msgr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN8BzC98q-Va_0HE5w3jby0Zutj27D6kg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
