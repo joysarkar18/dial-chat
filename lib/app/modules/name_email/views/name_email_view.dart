@@ -8,9 +8,7 @@ import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/name_email_controller.dart';
 
 class NameEmailView extends GetView<NameEmailController> {

@@ -30,6 +30,7 @@ abstract class Routes {
   static const DIAL_PAD = _Paths.DIAL_PAD;
   static const DIALING = _Paths.DIALING;
   static const CHAT_CALL = _Paths.CHAT_CALL;
+  static const VIDEO_CALL = _Paths.VIDEO_CALL;
 }
 
 abstract class _Paths {
@@ -61,4 +62,5 @@ abstract class _Paths {
   static const DIAL_PAD = '/dial-pad';
   static const DIALING = '/dialing';
   static const CHAT_CALL = '/chat-call';
+  static const VIDEO_CALL = '/video-call';
 }

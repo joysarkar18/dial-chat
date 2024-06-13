@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_chat/app/routes/app_pages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class SettingsController extends GetxController {
@@ -7,6 +9,7 @@ class SettingsController extends GetxController {
   final count = 0.obs;
   @override
   void onInit() {
+    getuserData();
     super.onInit();
   }
 
@@ -18,6 +21,21 @@ class SettingsController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Map<String, dynamic>? userData;
+
+  RxBool isLoading = true.obs;
+
+  void getuserData() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      userData = value.data();
+      isLoading.value = false;
+    });
   }
 
   void gotoPrivacyScreen() {

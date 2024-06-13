@@ -24,268 +24,282 @@ class SettingsView extends GetView<SettingsController> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              10.kheightBox,
-              Center(
-                child: Container(
-                  height: 70.kh,
-                  width: 70.kw,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: context.lightGrey,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: CommonImageView(
-                      imagePath: AppSvg.addPhotoCameraIcon,
-                    ),
-                  ),
-                ),
-              ),
-              15.kheightBox,
-              Center(
-                child: Text(
-                  AppStrings.profileName,
-                  style: AppTextStyles.inter14w600(color: context.black),
-                ),
-              ),
-              5.kheightBox,
-              Center(
-                child: Text(
-                  AppStrings.number,
-                  style: AppTextStyles.inter12w400(color: context.black),
-                ),
-              ),
-              40.kheightBox,
-              InkWell(
-                onTap: controller.gotoAccountScreen,
-                child: Row(
-                  children: [
-                    CommonImageView(
-                      svgPath: AppSvg.accountUserAvatar,
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.account,
-                          style:
-                              AppTextStyles.inter13w400(color: context.black),
+        child: Obx(
+          () => controller.isLoading.value
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      10.kheightBox,
+                      Center(
+                        child: Container(
+                          height: 70.kh,
+                          width: 70.kw,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: context.lightGrey,
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                      controller.userData!["imageUrl"]))),
                         ),
-                        Text(
-                          AppStrings.subsciptionsChangeNumber,
-                          style: AppTextStyles.inter12w400(color: context.grey),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              InkWell(
-                onTap: controller.gotoPrivacyScreen,
-                child: Row(
-                  children: [
-                    CommonImageView(
-                      svgPath: AppSvg.lock,
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.privacy,
-                          style:
-                              AppTextStyles.inter13w400(color: context.black),
-                        ),
-                        Text(
-                          AppStrings.twoStepVerificationBlokContacts,
-                          style: AppTextStyles.inter12w400(color: context.grey),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              InkWell(
-                onTap: controller.gotoNotificationScreen,
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 2.0),
-                      child: CommonImageView(
-                        svgPath: AppSvg.notifications,
                       ),
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.notifications,
+                      15.kheightBox,
+                      Center(
+                        child: Text(
+                          controller.userData!["name"],
                           style:
-                              AppTextStyles.inter13w400(color: context.black),
+                              AppTextStyles.inter14w600(color: context.black),
                         ),
-                        Text(
-                          AppStrings.ringtonesMessageSound,
-                          style: AppTextStyles.inter12w400(color: context.grey),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              InkWell(
-                onTap: controller.gotoCallsAndMessageScreen,
-                child: Row(
-                  children: [
-                    CommonImageView(
-                      svgPath: AppSvg.callsAndMessageIcon,
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.callsAndMessages,
+                      ),
+                      5.kheightBox,
+                      Center(
+                        child: Text(
+                          AppStrings.number,
                           style:
-                              AppTextStyles.inter13w400(color: context.black),
+                              AppTextStyles.inter12w400(color: context.black),
                         ),
-                        Text(
-                          AppStrings.callerIdBackUps,
-                          style: AppTextStyles.inter12w400(color: context.grey),
+                      ),
+                      40.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoAccountScreen,
+                        child: Row(
+                          children: [
+                            CommonImageView(
+                              svgPath: AppSvg.accountUserAvatar,
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.account,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.subsciptionsChangeNumber,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              InkWell(
-                onTap: controller.gotoStorageScreen,
-                child: Row(
-                  children: [
-                    CommonImageView(
-                      svgPath: AppSvg.storageIcon,
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.storage,
-                          style:
-                              AppTextStyles.inter13w400(color: context.black),
+                      ),
+                      20.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoPrivacyScreen,
+                        child: Row(
+                          children: [
+                            CommonImageView(
+                              svgPath: AppSvg.lock,
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.privacy,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.twoStepVerificationBlokContacts,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                        Text(
-                          AppStrings.dataUsageAutoDownloadSet,
-                          style: AppTextStyles.inter12w400(color: context.grey),
+                      ),
+                      20.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoNotificationScreen,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 2.0),
+                              child: CommonImageView(
+                                svgPath: AppSvg.notifications,
+                              ),
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.notifications,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.ringtonesMessageSound,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              InkWell(
-                onTap: controller.gotoLanguageScreen,
-                child: Row(
-                  children: [
-                    CommonImageView(
-                      svgPath: AppSvg.languageIcon,
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.language,
-                          style:
-                              AppTextStyles.inter13w400(color: context.black),
+                      ),
+                      20.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoCallsAndMessageScreen,
+                        child: Row(
+                          children: [
+                            CommonImageView(
+                              svgPath: AppSvg.callsAndMessageIcon,
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.callsAndMessages,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.callerIdBackUps,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                        Text(
-                          AppStrings.english,
-                          style: AppTextStyles.inter12w400(color: context.grey),
+                      ),
+                      20.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoStorageScreen,
+                        child: Row(
+                          children: [
+                            CommonImageView(
+                              svgPath: AppSvg.storageIcon,
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.storage,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.dataUsageAutoDownloadSet,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              InkWell(
-                onTap: controller.gotoAppThemeScreen,
-                child: Row(
-                  children: [
-                    CommonImageView(
-                      svgPath: AppSvg.appThemeIcon,
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.appTheme,
-                          style:
-                              AppTextStyles.inter13w400(color: context.black),
+                      ),
+                      20.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoLanguageScreen,
+                        child: Row(
+                          children: [
+                            CommonImageView(
+                              svgPath: AppSvg.languageIcon,
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.language,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.english,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                        Text(
-                          AppStrings.changeAppAppearance,
-                          style: AppTextStyles.inter12w400(color: context.grey),
+                      ),
+                      20.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoAppThemeScreen,
+                        child: Row(
+                          children: [
+                            CommonImageView(
+                              svgPath: AppSvg.appThemeIcon,
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.appTheme,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.changeAppAppearance,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              InkWell(
-                onTap: controller.gotoAboutScreen,
-                child: Row(
-                  children: [
-                    CommonImageView(
-                      svgPath: AppSvg.aboutIcon,
-                    ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppStrings.about,
-                          style:
-                              AppTextStyles.inter13w400(color: context.black),
+                      ),
+                      20.kheightBox,
+                      InkWell(
+                        onTap: controller.gotoAboutScreen,
+                        child: Row(
+                          children: [
+                            CommonImageView(
+                              svgPath: AppSvg.aboutIcon,
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppStrings.about,
+                                  style: AppTextStyles.inter13w400(
+                                      color: context.black),
+                                ),
+                                Text(
+                                  AppStrings.aboutUsSupport,
+                                  style: AppTextStyles.inter12w400(
+                                      color: context.grey),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                        Text(
-                          AppStrings.aboutUsSupport,
-                          style: AppTextStyles.inter12w400(color: context.grey),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              20.kheightBox,
-              Row(
-                children: [
-                  CommonImageView(
-                    svgPath: AppSvg.shareIcon,
+                      ),
+                      20.kheightBox,
+                      Row(
+                        children: [
+                          CommonImageView(
+                            svgPath: AppSvg.shareIcon,
+                          ),
+                          20.kwidthBox,
+                          Text(
+                            AppStrings.inviteAFriend,
+                            style:
+                                AppTextStyles.inter13w400(color: context.black),
+                          )
+                        ],
+                      ),
+                    ],
                   ),
-                  20.kwidthBox,
-                  Text(
-                    AppStrings.inviteAFriend,
-                    style: AppTextStyles.inter13w400(color: context.black),
-                  )
-                ],
-              ),
-            ],
-          ),
+                ),
         ),
       ),
     );

@@ -54,6 +54,8 @@ import '../modules/subscription/bindings/subscription_binding.dart';
 import '../modules/subscription/views/subscription_view.dart';
 import '../modules/two_step_verification/bindings/two_step_verification_binding.dart';
 import '../modules/two_step_verification/views/two_step_verification_view.dart';
+import '../modules/videoCall/bindings/video_call_binding.dart';
+import '../modules/videoCall/views/video_call_view.dart';
 
 part 'app_routes.dart';
 
@@ -197,6 +199,11 @@ class AppPages {
       name: _Paths.CHAT_CALL,
       page: () => const ChatCallView(),
       binding: ChatCallBinding(),
+    ),
+    GetPage(
+      name: _Paths.VIDEO_CALL,
+      page: () => const VideoCallView(),
+      binding: VideoCallBinding(),
     ),
   ];
 }

@@ -35,63 +35,70 @@ class HomeView extends GetView<HomeController> {
             left: 16.kw,
             right: 16.kw,
           ),
-          child: ListView.builder(
-            itemCount: 30,
-            itemBuilder: (context, index) => Container(
-              height: 70.kh,
-              width: 100.w,
-              padding: EdgeInsets.symmetric(vertical: 5.kh),
-              child: InkWell(
-                onTap: () {
-                  Get.toNamed(Routes.CHAT);
-                },
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(25.kh),
-                      child: CommonImageView(
-                        height: 50.kh,
-                        width: 50.kh,
-                        fit: BoxFit.cover,
-                        url:
-                            "https://variety.com/wp-content/uploads/2024/02/Eminem.jpg",
+          child: Obx(
+            () => controller.contacts.isEmpty
+                ? Center(
+                    child: Text("No contacts avaiable"),
+                  )
+                : ListView.builder(
+                    itemCount: controller.contacts.value.length,
+                    itemBuilder: (context, index) => Container(
+                      height: 70.kh,
+                      width: 100.w,
+                      padding: EdgeInsets.symmetric(vertical: 5.kh),
+                      child: InkWell(
+                        onTap: () {
+                          Get.toNamed(Routes.CHAT);
+                        },
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(25.kh),
+                              child: CommonImageView(
+                                height: 50.kh,
+                                width: 50.kh,
+                                fit: BoxFit.cover,
+                                url:
+                                    "https://variety.com/wp-content/uploads/2024/02/Eminem.jpg",
+                              ),
+                            ),
+                            20.kwidthBox,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  controller.contacts.value[index].displayName!,
+                                  style: AppTextStyles.inter14w600(
+                                      color: context.black),
+                                ),
+                                3.kheightBox,
+                                Text(
+                                  "Lets meet up soon",
+                                  style: AppTextStyles.inter12w300(
+                                      color: context.grey),
+                                ),
+                              ],
+                            ),
+                            const Spacer(),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 18.kh),
+                                  child: Text(
+                                    "10:22",
+                                    style: AppTextStyles.inter12w300(
+                                        color: context.grey),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                    20.kwidthBox,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Greg Beast",
-                          style:
-                              AppTextStyles.inter14w600(color: context.black),
-                        ),
-                        3.kheightBox,
-                        Text(
-                          "Lets meet up soon",
-                          style: AppTextStyles.inter12w300(color: context.grey),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 18.kh),
-                          child: Text(
-                            "10:22",
-                            style:
-                                AppTextStyles.inter12w300(color: context.grey),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
+                  ),
           ),
         ));
   }

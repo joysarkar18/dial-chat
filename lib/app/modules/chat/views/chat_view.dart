@@ -77,7 +77,9 @@ class ChatView extends GetView<ChatController> {
           // ),
           // 13.kwidthBox,
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.VIDEO_CALL);
+              },
               icon: CommonImageView(
                 svgPath: AppSvg.videoIconChat,
                 svgColor: context.sendIcon,
