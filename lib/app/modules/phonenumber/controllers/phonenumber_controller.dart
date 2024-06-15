@@ -3,6 +3,7 @@ import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PhonenumberController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -32,21 +33,21 @@ class PhonenumberController extends GetxController {
       // Sign in the user with their phone number
       await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          await _auth.signInWithCredential(credential);
-          Get.back(); // Dismiss loading overlay
-          // Navigate to OTP screen or any other screen after successful login
-          Get.toNamed(Routes.OTP);
-        },
+        verificationCompleted: (PhoneAuthCredential credential) async {},
         verificationFailed: (FirebaseAuthException e) {
           Get.back(); // Dismiss loading overlay
           // Handle verification failed
           showErrorDialog(e.message ?? 'Verification failed');
         },
-        codeSent: (String verificationId, int? resendToken) {
+        codeSent: (String verificationId, int? resendToken) async {
           Get.back(); // Dismiss loading overlay
           // Navigate to OTP screen and pass verificationId to it
           verificationIdString = verificationId;
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.setString(
+            'phoneNo',
+            phoneNumberController.text.trim(),
+          );
           Get.toNamed(Routes.OTP, arguments: verificationId);
         },
         codeAutoRetrievalTimeout: (String verificationId) {},

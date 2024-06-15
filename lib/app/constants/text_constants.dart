@@ -171,4 +171,10 @@ class AppStrings {
   static const String viewAll = "View All";
   static const String contacts = "Contacts";
   static const String dialing = "Dialing";
+  static const String newGroup = "New Group";
+  static const String contactsOnDialChat = "Contacts on DialChat";
+  static const String startConversion = "Start Conversation";
+  static const String inviteToDialChat = "Invite to DialChat";
+  static const String invite = "Invite";
+  static const String inviteToDialchat = "Invite to DialChat";
 }

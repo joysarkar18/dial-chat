@@ -43,4 +43,8 @@ class AppSvg {
   static const String dial_call = "assets/svg/dial_call.svg";
   static const String dialCallPage = "assets/svg/dial_call_page.svg";
   static const String dialChatIcon = "assets/svg/DialChat_icon.svg";
+
+  //pngs
+
+  static const String defaultUser = "assets/svg/default_user.png";
 }

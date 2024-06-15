@@ -1,5 +1,6 @@
 import 'package:dial_chat/app/components/common_image_view.dart';
 import 'package:dial_chat/app/constants/svg_constant.dart';
+import 'package:dial_chat/app/modules/chat/controllers/chat_controller.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,8 @@ import 'package:get/get.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 
 class MessageInputBar extends StatefulWidget {
-  const MessageInputBar({Key? key}) : super(key: key);
+  const MessageInputBar({Key? key, required this.onSend}) : super(key: key);
+  final Function onSend;
 
   @override
   _MessageInputBarState createState() => _MessageInputBarState();
@@ -15,11 +17,11 @@ class MessageInputBar extends StatefulWidget {
 
 class _MessageInputBarState extends State<MessageInputBar> {
   final FocusNode _focusNode = FocusNode();
-  final TextEditingController _controller = TextEditingController();
   double _containerHeight = 50.0; // Initial height
   final double _maxContainerHeight = 150.0; // Maximum height to limit expansion
   bool _isFocused = false;
-  bool _showOptions = false; // State variable to toggle options
+  bool _showOptions = false;
+  // State variable to toggle options
 
   @override
   void initState() {
@@ -31,7 +33,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
   void dispose() {
     _focusNode.removeListener(_handleFocusChange);
     _focusNode.dispose();
-    _controller.dispose();
+    Get.find<ChatController>().messageController.dispose();
     super.dispose();
   }
 
@@ -54,7 +56,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
 
   double _calculateTextHeight() {
     final span = TextSpan(
-      text: _controller.text,
+      text: Get.find<ChatController>().messageController.text,
       style: const TextStyle(fontSize: 16.0),
     );
     final tp = TextPainter(
@@ -125,7 +127,8 @@ class _MessageInputBarState extends State<MessageInputBar> {
                                       right: 8.0, left: 10.0),
                                   child: TextField(
                                     focusNode: _focusNode,
-                                    controller: _controller,
+                                    controller: Get.find<ChatController>()
+                                        .messageController,
                                     maxLines: null,
                                     onChanged: (text) =>
                                         _updateContainerHeight(),
@@ -175,14 +178,22 @@ class _MessageInputBarState extends State<MessageInputBar> {
                       // mic action
                     }
                   },
-                  child: Container(
-                    height: 36,
-                    width: 36,
-                    decoration: BoxDecoration(
-                        color: context.sendBackground, shape: BoxShape.circle),
-                    child: Icon(
-                      _isFocused ? Icons.send : Icons.mic,
-                      color: Colors.white70,
+                  child: InkWell(
+                    onTap: () {
+                      Get.find<ChatController>().sendMessage(
+                          Get.find<ChatController>().messageController.text);
+                      widget.onSend();
+                    },
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: BoxDecoration(
+                          color: context.sendBackground,
+                          shape: BoxShape.circle),
+                      child: Icon(
+                        _isFocused ? Icons.send : Icons.mic,
+                        color: Colors.white70,
+                      ),
                     ),
                   ),
                 ),

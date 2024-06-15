@@ -29,17 +29,26 @@ class NameEmailView extends GetView<NameEmailController> {
                     height: 70.kh,
                     width: 70.kh,
                     decoration: BoxDecoration(
-                        image: controller.pickedImagePath.value.isNotEmpty
-                            ? DecorationImage(
-                                fit: BoxFit.cover,
-                                image: FileImage(
-                                    File(controller.pickedImagePath.value)))
-                            : null,
-                        shape: BoxShape.circle,
-                        color: context.lightGrey),
+                      image: controller.pickedImagePath.value.isNotEmpty
+                          ? DecorationImage(
+                              fit: BoxFit.cover,
+                              image: FileImage(
+                                  File(controller.pickedImagePath.value)),
+                            )
+                          : controller.imageUrl.isNotEmpty
+                              ? DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image:
+                                      NetworkImage(controller.imageUrl.value),
+                                )
+                              : null,
+                      shape: BoxShape.circle,
+                      color: context.lightGrey,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: controller.pickedImagePath.value.isEmpty
+                      child: controller.imageUrl.isEmpty &&
+                              controller.pickedImagePath.value.isEmpty
                           ? CommonImageView(
                               imagePath: AppSvg.addPhotoCameraIcon,
                             )

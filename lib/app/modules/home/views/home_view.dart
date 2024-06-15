@@ -27,7 +27,7 @@ class HomeView extends GetView<HomeController> {
                 svgPath: AppSvg.chatButtonIcon,
               ),
               onPressed: () {
-                Get.toNamed(Routes.DIAL_PAD);
+                Get.toNamed(Routes.SELECT_CONTACT);
               }),
         ),
         body: Padding(

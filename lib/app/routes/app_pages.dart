@@ -44,6 +44,8 @@ import '../modules/posts/bindings/posts_binding.dart';
 import '../modules/posts/views/posts_view.dart';
 import '../modules/privacy/bindings/privacy_binding.dart';
 import '../modules/privacy/views/privacy_view.dart';
+import '../modules/selectContact/bindings/select_contact_binding.dart';
+import '../modules/selectContact/views/select_contact_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -204,6 +206,11 @@ class AppPages {
       name: _Paths.VIDEO_CALL,
       page: () => const VideoCallView(),
       binding: VideoCallBinding(),
+    ),
+    GetPage(
+      name: _Paths.SELECT_CONTACT,
+      page: () => const SelectContactView(),
+      binding: SelectContactBinding(),
     ),
   ];
 }
