@@ -22,6 +22,8 @@ import '../modules/dial_pad/bindings/dial_pad_binding.dart';
 import '../modules/dial_pad/views/dial_pad_view.dart';
 import '../modules/dialing/bindings/dialing_binding.dart';
 import '../modules/dialing/views/dialing_view.dart';
+import '../modules/groupChat/bindings/group_chat_binding.dart';
+import '../modules/groupChat/views/group_chat_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/internationalplans/bindings/internationalplans_binding.dart';
@@ -211,6 +213,11 @@ class AppPages {
       name: _Paths.SELECT_CONTACT,
       page: () => const SelectContactView(),
       binding: SelectContactBinding(),
+    ),
+    GetPage(
+      name: _Paths.GROUP_CHAT,
+      page: () => const GroupChatView(),
+      binding: GroupChatBinding(),
     ),
   ];
 }

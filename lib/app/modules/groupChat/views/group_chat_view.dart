@@ -1,26 +1,27 @@
 import 'package:chat_bubbles/bubbles/bubble_normal.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_chat/app/components/message_input_bar.dart';
-import 'package:dial_chat/app/modules/chat/controllers/chat_controller.dart';
 import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
-class ChatView extends GetView<ChatController> {
-  const ChatView({Key? key}) : super(key: key);
+import '../controllers/group_chat_controller.dart';
 
+class GroupChatView extends GetView<GroupChatController> {
+  const GroupChatView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
-    final currentUserId = Get.arguments[0]["user"].uid;
+    final currentUserId = FirebaseAuth.instance.currentUser!.uid;
 
     void scrollToBottom() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (scrollController.hasClients) {
           scrollController.animateTo(
-            scrollController.position.minScrollExtent,
+            scrollController.position.maxScrollExtent,
             duration: Duration(milliseconds: 300),
             curve: Curves.easeOut,
           );
@@ -38,42 +39,42 @@ class ChatView extends GetView<ChatController> {
           },
         ),
         leadingWidth: 30,
-        title: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection("users")
-              .doc(Get.arguments[0]["user"].uid)
-              .snapshots(),
-          builder: (context, snapshot) {
-            return snapshot.hasData
-                ? Row(
-                    children: [
-                      CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(snapshot.data!["imageUrl"])),
-                      SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            Get.arguments[0]["name"],
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: context.black),
-                          ),
-                          Text(
-                            snapshot.data!["online"] ? "online" : "offline",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w300,
-                                color: context.grey),
-                          ),
-                        ],
-                      )
-                    ],
+        title: Row(
+          children: [
+            Get.arguments[0]["groupImage"].toString().isEmpty
+                ? Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                        color: context.secondaryBlue, shape: BoxShape.circle),
+                    child: Center(
+                      child: Icon(Icons.group),
+                    ),
                   )
-                : SizedBox();
-          },
+                : CircleAvatar(
+                    backgroundImage:
+                        NetworkImage(Get.arguments[0]["groupImage"])),
+            SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  Get.arguments[0]["name"],
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: context.black),
+                ),
+                Text(
+                  "",
+                  style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300,
+                      color: context.grey),
+                ),
+              ],
+            )
+          ],
         ),
         actions: <Widget>[
           IconButton(
@@ -124,10 +125,16 @@ class ChatView extends GetView<ChatController> {
                       controller.messages[index].data() as Map<String, dynamic>;
                   final isSender = message['senderId'] == currentUserId;
 
-                  return BubbleNormal(
-                    text: message['text'],
-                    isSender: isSender,
-                    color: isSender ? Color(0xff7FD0E4) : Color(0xFFE8E8EE),
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (!isSender) Text("Joy Sarkar"),
+                      BubbleNormal(
+                        text: message['text'],
+                        isSender: isSender,
+                        color: isSender ? Color(0xff7FD0E4) : Color(0xFFE8E8EE),
+                      ),
+                    ],
                   );
                 },
               );
@@ -135,9 +142,10 @@ class ChatView extends GetView<ChatController> {
           ),
           30.kheightBox,
           MessageInputBar(
-            isGroup: false,
+            isGroup: true,
             onSend: () {
-              controller.sendMessage(controller.messageController.text);
+              Get.find<GroupChatController>().sendMessage(
+                  Get.find<GroupChatController>().messageController.text);
               scrollToBottom();
             },
           ),

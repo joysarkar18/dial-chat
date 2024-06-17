@@ -1,6 +1,7 @@
 import 'package:dial_chat/app/components/common_image_view.dart';
 import 'package:dial_chat/app/constants/svg_constant.dart';
 import 'package:dial_chat/app/constants/text_constants.dart';
+import 'package:dial_chat/app/modules/selectContact/views/group_create_screen.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
@@ -31,29 +32,35 @@ class SelectContactView extends GetView<SelectContactController> {
           padding: EdgeInsets.only(left: 16.kw, right: 16.kw, top: 10.kh),
           child: Obx(() => Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 35,
-                        width: 35,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: context.secondaryBlue),
-                        child: const Center(
-                          child: Icon(
-                            Icons.group_add_sharp,
-                            size: 20,
+                  InkWell(
+                    onTap: () {
+                      Get.to(CreateGroupChat());
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 35,
+                          width: 35,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: context.secondaryBlue),
+                          child: const Center(
+                            child: Icon(
+                              Icons.group_add_sharp,
+                              size: 20,
+                            ),
                           ),
                         ),
-                      ),
-                      20.kwidthBox,
-                      Text(
-                        AppStrings.newGroup,
-                        style: AppTextStyles.rubik15w600(color: context.black),
-                      ),
-                      const Spacer(),
-                      const Icon(Icons.keyboard_arrow_right_sharp)
-                    ],
+                        20.kwidthBox,
+                        Text(
+                          AppStrings.newGroup,
+                          style:
+                              AppTextStyles.rubik15w600(color: context.black),
+                        ),
+                        const Spacer(),
+                        const Icon(Icons.keyboard_arrow_right_sharp)
+                      ],
+                    ),
                   ),
                   20.kheightBox,
                   const Row(

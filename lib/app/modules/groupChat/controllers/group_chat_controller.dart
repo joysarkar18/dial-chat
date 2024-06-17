@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_chat/app/modules/home/controllers/home_controller.dart';
-import 'package:flutter/widgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ChatController extends GetxController {
+class GroupChatController extends GetxController {
+  //TODO: Implement GroupChatController
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final messages = <DocumentSnapshot>[].obs;
   final messageController = TextEditingController();
@@ -26,19 +29,19 @@ class ChatController extends GetxController {
 
   void sendMessage(String text) {
     if (text.isEmpty) return;
+
     chatReference.add({
       'text': text,
-      'senderId': Get.arguments[0]["user"].uid,
+      'senderId': FirebaseAuth.instance.currentUser!.uid,
       'timestamp': FieldValue.serverTimestamp(),
     });
 
     _firestore
         .collection("users")
-        .doc(Get.arguments[0]["user"].uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("chatRooms")
         .doc(Get.arguments[0]["chatID"])
         .update({
-      "user": Get.find<HomeController>().userData,
       "lastUpdate": Timestamp.fromDate(DateTime.now()),
       "seen": false,
       "lastMessage": text,

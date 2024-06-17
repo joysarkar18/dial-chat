@@ -1,44 +1,61 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:contacts_service/contacts_service.dart';
 
 class HomeController extends GetxController {
-  // List to store contacts
-  final contacts = <Contact>[].obs;
+  // Stream to hold all chats data
+  var allChats = Stream<List<Map<String, dynamic>>>.empty();
+  Map<String, dynamic>? userData;
+
+  // RxBool to indicate loading state
+  final isLoading = true.obs;
 
   @override
   void onInit() {
     super.onInit();
+    getuserData();
+    getAllMyChatsStream(); // Use the stream-based method
     _requestPermissionAndFetchContacts();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  // Fetches user data (unchanged)
+  void getuserData() async {
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((value) {
+      userData = value.data();
+      isLoading.value = false;
+    });
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  // Creates a stream for all chats data
+  void getAllMyChatsStream() async {
+    allChats = FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("chatRooms")
+        .snapshots()
+        .map((querySnapshot) =>
+            querySnapshot.docs.map((e) => e.data()).toList());
   }
 
-  // Method to request permission and fetch contacts
+  // Request permission and fetch contacts (unchanged)
   void _requestPermissionAndFetchContacts() async {
     PermissionStatus permissionStatus = await _getContactPermission();
-
     if (permissionStatus == PermissionStatus.granted) {
-      _fetchContacts();
     } else {
-      // Handle the case when permission is not granted
       Get.snackbar(
           'Permission Denied', 'Cannot access contacts without permission');
     }
   }
 
-  // Method to request contact permission
+  // Request contact permission (unchanged)
   Future<PermissionStatus> _getContactPermission() async {
     PermissionStatus permission = await Permission.contacts.status;
-
     if (permission != PermissionStatus.granted) {
       Map<Permission, PermissionStatus> permissionStatus =
           await [Permission.contacts].request();
@@ -48,13 +65,7 @@ class HomeController extends GetxController {
     }
   }
 
-  // Method to fetch contacts
-  void _fetchContacts() async {
-    Iterable<Contact> contactsList = await ContactsService.getContacts();
-    contacts.assignAll(contactsList);
-  }
-
-  // Increment method for count
+  // Increment method (unchanged)
   final count = 0.obs;
   void increment() => count.value++;
 }

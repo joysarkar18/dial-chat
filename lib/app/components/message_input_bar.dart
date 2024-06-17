@@ -1,6 +1,7 @@
 import 'package:dial_chat/app/components/common_image_view.dart';
 import 'package:dial_chat/app/constants/svg_constant.dart';
 import 'package:dial_chat/app/modules/chat/controllers/chat_controller.dart';
+import 'package:dial_chat/app/modules/groupChat/controllers/group_chat_controller.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,10 @@ import 'package:get/get.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 
 class MessageInputBar extends StatefulWidget {
-  const MessageInputBar({Key? key, required this.onSend}) : super(key: key);
+  const MessageInputBar({Key? key, required this.onSend, required this.isGroup})
+      : super(key: key);
   final Function onSend;
+  final bool isGroup;
 
   @override
   _MessageInputBarState createState() => _MessageInputBarState();
@@ -56,7 +59,9 @@ class _MessageInputBarState extends State<MessageInputBar> {
 
   double _calculateTextHeight() {
     final span = TextSpan(
-      text: Get.find<ChatController>().messageController.text,
+      text: widget.isGroup
+          ? Get.find<GroupChatController>().messageController.text
+          : Get.find<ChatController>().messageController.text,
       style: const TextStyle(fontSize: 16.0),
     );
     final tp = TextPainter(
@@ -127,8 +132,11 @@ class _MessageInputBarState extends State<MessageInputBar> {
                                       right: 8.0, left: 10.0),
                                   child: TextField(
                                     focusNode: _focusNode,
-                                    controller: Get.find<ChatController>()
-                                        .messageController,
+                                    controller: widget.isGroup
+                                        ? Get.find<GroupChatController>()
+                                            .messageController
+                                        : Get.find<ChatController>()
+                                            .messageController,
                                     maxLines: null,
                                     onChanged: (text) =>
                                         _updateContainerHeight(),
@@ -180,8 +188,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
                   },
                   child: InkWell(
                     onTap: () {
-                      Get.find<ChatController>().sendMessage(
-                          Get.find<ChatController>().messageController.text);
+                      print("onSend click");
                       widget.onSend();
                     },
                     child: Container(
