@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,13 @@ class HomeController extends GetxController {
     getuserData();
     getAllMyChatsStream(); // Use the stream-based method
     _requestPermissionAndFetchContacts();
+    requestMicrophonePermission();
+  }
+
+  void requestMicrophonePermission() async {
+    print("get mic access called");
+    PermissionStatus status = await Permission.microphone.request();
+    PermissionStatus status2 = await Permission.camera.request();
   }
 
   // Fetches user data (unchanged)

@@ -60,6 +60,10 @@ import '../modules/two_step_verification/bindings/two_step_verification_binding.
 import '../modules/two_step_verification/views/two_step_verification_view.dart';
 import '../modules/videoCall/bindings/video_call_binding.dart';
 import '../modules/videoCall/views/video_call_view.dart';
+import '../modules/voiceCall/bindings/voice_call_binding.dart';
+import '../modules/voiceCall/views/voice_call_view.dart';
+import '../modules/voiceCalling/bindings/voice_calling_binding.dart';
+import '../modules/voiceCalling/views/voice_calling_view.dart';
 
 part 'app_routes.dart';
 
@@ -218,6 +222,16 @@ class AppPages {
       name: _Paths.GROUP_CHAT,
       page: () => const GroupChatView(),
       binding: GroupChatBinding(),
+    ),
+    GetPage(
+      name: _Paths.VOICE_CALL,
+      page: () => const VoiceCallView(),
+      binding: VoiceCallBinding(),
+    ),
+    GetPage(
+      name: _Paths.VOICE_CALLING,
+      page: () => const VoiceCallingView(),
+      binding: VoiceCallingBinding(),
     ),
   ];
 }

@@ -33,6 +33,8 @@ abstract class Routes {
   static const VIDEO_CALL = _Paths.VIDEO_CALL;
   static const SELECT_CONTACT = _Paths.SELECT_CONTACT;
   static const GROUP_CHAT = _Paths.GROUP_CHAT;
+  static const VOICE_CALL = _Paths.VOICE_CALL;
+  static const VOICE_CALLING = _Paths.VOICE_CALLING;
 }
 
 abstract class _Paths {
@@ -67,4 +69,6 @@ abstract class _Paths {
   static const VIDEO_CALL = '/video-call';
   static const SELECT_CONTACT = '/select-contact';
   static const GROUP_CHAT = '/group-chat';
+  static const VOICE_CALL = '/voice-call';
+  static const VOICE_CALLING = '/voice-calling';
 }

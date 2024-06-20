@@ -6,7 +6,7 @@ import 'package:flutter_webrtc/flutter_webrtc.dart' as webrtc;
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:get/get.dart';
 
-class ChatCallController extends GetxController {
+class VoiceCallController extends GetxController {
   final localVideoRenderer = webrtc.RTCVideoRenderer();
   final remoteVideoRenderer = webrtc.RTCVideoRenderer();
   RxBool isLoading = true.obs;
@@ -16,7 +16,7 @@ class ChatCallController extends GetxController {
   String callId = Get.arguments['callId'] ?? "";
   String receiverId = Get.arguments['receiverId'];
   String? currentRoomText;
-  RxBool isSpeakerEnabled = true.obs;
+  RxBool isSpeakerEnabled = false.obs;
   RxBool isMuted = false.obs;
   RxBool isCallPicked = false.obs;
   RxString callDuration = '00:00'.obs;
@@ -50,9 +50,7 @@ class ChatCallController extends GetxController {
     } else {
       await joinRoom(callId, remoteVideoRenderer);
     }
-    listenForHangUp();
-    webrtc.Helper.setSpeakerphoneOn(
-        isSpeakerEnabled.value); // Listen for hang up changes
+    listenForHangUp(); // Listen for hang up changes
     isLoading.value = false;
   }
 
@@ -63,7 +61,7 @@ class ChatCallController extends GetxController {
 
   Future<String> createRoom(RTCVideoRenderer remoteRenderer) async {
     FirebaseFirestore db = FirebaseFirestore.instance;
-    DocumentReference roomRef = db.collection('rooms').doc();
+    DocumentReference roomRef = db.collection('voiceRooms').doc();
 
     print('Create PeerConnection with configuration: $configuration');
 
@@ -150,7 +148,7 @@ class ChatCallController extends GetxController {
   Future<void> joinRoom(String roomId, RTCVideoRenderer remoteVideo) async {
     FirebaseFirestore db = FirebaseFirestore.instance;
     print(roomId);
-    DocumentReference roomRef = db.collection('rooms').doc('$roomId');
+    DocumentReference roomRef = db.collection('voiceRooms').doc('$roomId');
     var roomSnapshot = await roomRef.get();
     print('Got room ${roomSnapshot.exists}');
 
@@ -226,7 +224,7 @@ class ChatCallController extends GetxController {
     RTCVideoRenderer remoteVideo,
   ) async {
     var stream = await webrtc.navigator.mediaDevices
-        .getUserMedia({'video': true, 'audio': true});
+        .getUserMedia({'video': false, 'audio': true});
 
     localVideo.srcObject = stream;
     localStream = stream;
@@ -249,7 +247,7 @@ class ChatCallController extends GetxController {
 
     if (callId != null) {
       var db = FirebaseFirestore.instance;
-      var roomRef = db.collection('rooms').doc(callId);
+      var roomRef = db.collection('voiceRooms').doc(callId);
 
       await roomRef.update({'hangUped': true}); // Update hangUped field
 
@@ -270,7 +268,7 @@ class ChatCallController extends GetxController {
 
   void listenForHangUp() {
     FirebaseFirestore.instance
-        .collection('rooms')
+        .collection('voiceRooms')
         .doc(callId)
         .snapshots()
         .listen((snapshot) {
@@ -334,13 +332,5 @@ class ChatCallController extends GetxController {
     _timer = null;
     _seconds = 0;
     callDuration.value = '00:00';
-  }
-
-  // New function to rotate the camera
-  Future<void> rotateCamera() async {
-    if (localStream != null) {
-      final videoTrack = localStream!.getVideoTracks().first;
-      await webrtc.Helper.switchCamera(videoTrack);
-    }
   }
 }

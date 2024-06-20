@@ -1,9 +1,11 @@
 import 'package:dial_chat/app/components/common_image_view.dart';
 import 'package:dial_chat/app/constants/svg_constant.dart';
 import 'package:dial_chat/app/constants/text_constants.dart';
+import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:dial_chat/app/utils/text_styles_util.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -31,8 +33,11 @@ class NavBarView extends GetView<NavBarController> {
                   svgPath: AppSvg.appBarSearchLogo,
                 ),
                 10.kwidthBox,
-                CommonImageView(
-                  svgPath: AppSvg.appBarCameraLogo,
+                InkWell(
+                  onTap: () {},
+                  child: CommonImageView(
+                    svgPath: AppSvg.appBarCameraLogo,
+                  ),
                 ),
                 10.kwidthBox,
                 InkWell(

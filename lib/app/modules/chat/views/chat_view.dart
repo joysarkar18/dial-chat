@@ -1,12 +1,12 @@
-import 'package:chat_bubbles/bubbles/bubble_normal.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_chat/app/components/message_input_bar.dart';
 import 'package:dial_chat/app/modules/chat/controllers/chat_controller.dart';
 import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:chat_bubbles/bubbles/bubble_normal.dart'; // Import CallsController
 
 class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class ChatView extends GetView<ChatController> {
     final currentUserId = Get.arguments[0]["user"].uid;
 
     void scrollToBottom() {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
         if (scrollController.hasClients) {
           scrollController.animateTo(
             scrollController.position.minScrollExtent,
@@ -48,8 +48,12 @@ class ChatView extends GetView<ChatController> {
                 ? Row(
                     children: [
                       CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(snapshot.data!["imageUrl"])),
+                          backgroundImage: NetworkImage(snapshot
+                                          .data!["imageUrl"] ==
+                                      null ||
+                                  snapshot.data!["imageUrl"] == ""
+                              ? "https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
+                              : snapshot.data!["imageUrl"])),
                       SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,11 +81,23 @@ class ChatView extends GetView<ChatController> {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.CHAT_CALL, arguments: {
+                "callId": "joysarkarcalltest",
+                "receiverId": Get.arguments[0]["user"].uid,
+                'isCaller': true,
+              });
+            },
             icon: Icon(Icons.videocam),
           ),
           InkWell(
-            onTap: () => Get.toNamed(Routes.CHAT_CALL),
+            onTap: () {
+              Get.toNamed(Routes.VOICE_CALL, arguments: {
+                "callId": "joysarkarcalltest",
+                "receiverId": Get.arguments[0]["user"].uid,
+                'isCaller': true,
+              });
+            },
             child: Icon(Icons.call),
           ),
           PopupMenuButton<String>(

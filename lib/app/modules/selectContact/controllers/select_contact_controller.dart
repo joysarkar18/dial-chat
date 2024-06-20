@@ -187,17 +187,18 @@ class SelectContactController extends GetxController {
     return chatRoomDoc.id;
   }
 
+  List<String> userIdsTemp = [];
   // Function to create a chat group with multiple users
   Future<String> createChatGroup(
       {required String groupName,
       required List<UserModel> users,
       required String adminId}) async {
     final chatRoomsCollection = _firestore.collection('chatRooms');
-
+    final cahtCollection = _firestore.collection('chats');
     // Get user IDs from the list of UserModel
     List<String> userIds = users.map((user) => user.uid).toList();
     userIds.add(adminId); // Add admin ID to the user list
-
+    userIdsTemp = userIds;
     // Create a new chat group
     DocumentReference chatRoomDoc = await chatRoomsCollection.add({
       'userIds': userIds,
@@ -206,6 +207,10 @@ class SelectContactController extends GetxController {
       'createdAt': FieldValue.serverTimestamp(),
       'isGroupChat': true,
       'groupLogoUrl': groupLogoUrl.value, // Add group logo URL
+    });
+    cahtCollection.doc(chatRoomDoc.id).collection("messages").doc().set({
+      "timestamp": Timestamp.fromDate(DateTime.now()),
+      "text": "group created",
     });
 
     // Update each user's chat rooms

@@ -14,6 +14,7 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +67,8 @@ class HomeView extends GetView<HomeController> {
                                 {
                                   "name": chats[index]["groupName"].toString(),
                                   "groupImage": chats[index]["groupLogoUrl"],
-                                  "chatID": chats[index]["chatId"]
+                                  "chatID": chats[index]["chatId"],
+                                  "userIds": chats[index]["userIds"],
                                 }
                               ]);
                             }
@@ -75,16 +77,28 @@ class HomeView extends GetView<HomeController> {
                                   chats[index]["isGroupChat"] == false)
                               ? Row(
                                   children: [
-                                    ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.circular(25.kh),
-                                      child: CommonImageView(
-                                        height: 50.kh,
-                                        width: 50.kh,
-                                        fit: BoxFit.cover,
-                                        url: chats[index]["user"]["imageUrl"],
-                                      ),
-                                    ),
+                                    chats[index]["user"]["imageUrl"] == ""
+                                        ? Container(
+                                            height: 50,
+                                            width: 50,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: context.grey),
+                                            child: Center(
+                                              child: Icon(Icons.person),
+                                            ),
+                                          )
+                                        : ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(25.kh),
+                                            child: CommonImageView(
+                                              height: 50.kh,
+                                              width: 50.kh,
+                                              fit: BoxFit.cover,
+                                              url: chats[index]["user"]
+                                                  ["imageUrl"],
+                                            ),
+                                          ),
                                     20.kwidthBox,
                                     Column(
                                       crossAxisAlignment:

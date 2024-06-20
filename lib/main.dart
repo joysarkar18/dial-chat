@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:dial_chat/app/modules/app_theme/controllers/app_theme_controller.dart';
 import 'package:dial_chat/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,6 +22,23 @@ void main() async {
       Permission.notification.request();
     }
   });
+
+  AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+        channelKey: 'call_channel',
+        channelName: 'Call Notifications',
+        channelDescription: 'Notification channel for call alerts',
+        defaultColor: Color(0xFF9D50DD),
+        ledColor: Colors.white,
+        importance: NotificationImportance.Max,
+        defaultRingtoneType: DefaultRingtoneType.Ringtone,
+        channelShowBadge: true,
+        locked: true,
+      )
+    ],
+  );
   runApp(
     MyApp(),
   );

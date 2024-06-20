@@ -36,7 +36,12 @@ class _MessageInputBarState extends State<MessageInputBar> {
   void dispose() {
     _focusNode.removeListener(_handleFocusChange);
     _focusNode.dispose();
-    Get.find<ChatController>().messageController.dispose();
+    if (widget.isGroup) {
+      Get.find<GroupChatController>().messageController.dispose();
+    } else {
+      Get.find<ChatController>().messageController.dispose();
+    }
+
     super.dispose();
   }
 

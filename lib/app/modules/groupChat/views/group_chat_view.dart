@@ -5,13 +5,12 @@ import 'package:dial_chat/app/utils/color_util.dart';
 import 'package:dial_chat/app/utils/responsive_size.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/group_chat_controller.dart';
 
 class GroupChatView extends GetView<GroupChatController> {
   const GroupChatView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
@@ -65,12 +64,16 @@ class GroupChatView extends GetView<GroupChatController> {
                       fontWeight: FontWeight.w400,
                       color: context.black),
                 ),
-                Text(
-                  "",
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: context.grey),
+                Obx(
+                  () => Text(
+                    controller.isLoading.value
+                        ? ""
+                        : "${controller.allMemberMap[Get.arguments[0]["userIds"][0]]!.name}, ${controller.allMemberMap[Get.arguments[0]["userIds"][1]]!.name} and more...",
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                        color: context.grey),
+                  ),
                 ),
               ],
             )
@@ -128,7 +131,6 @@ class GroupChatView extends GetView<GroupChatController> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (!isSender) Text("Joy Sarkar"),
                       BubbleNormal(
                         text: message['text'],
                         isSender: isSender,
@@ -144,8 +146,7 @@ class GroupChatView extends GetView<GroupChatController> {
           MessageInputBar(
             isGroup: true,
             onSend: () {
-              Get.find<GroupChatController>().sendMessage(
-                  Get.find<GroupChatController>().messageController.text);
+              controller.sendMessage(controller.messageController.text);
               scrollToBottom();
             },
           ),

@@ -165,7 +165,8 @@ class _CreateGroupChatState extends State<CreateGroupChat> {
         "name": groupName,
         "chatID": chatId,
         "isGroup": true,
-        "groupImage": Get.find<SelectContactController>().groupLogoUrl.value
+        "groupImage": Get.find<SelectContactController>().groupLogoUrl.value,
+        "userIds": Get.find<SelectContactController>().userIdsTemp,
       }
     ]);
   }
