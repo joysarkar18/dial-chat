@@ -1,9 +1,11 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:dial_chat/app/modules/calls/views/calls_view.dart';
 import 'package:dial_chat/app/modules/home/views/home_view.dart';
 import 'package:dial_chat/app/modules/posts/views/posts_view.dart';
 import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:dial_chat/app/utils/notification_service.dart';
-import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -22,10 +24,45 @@ class NavBarController extends GetxController {
   };
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
+
     _requestNotificationPermission();
-    NotificationService.initialize();
+    final RemoteMessage? _message =
+        await FirebaseMessaging.instance.getInitialMessage();
+    if (_message != null) {
+      print(_message.data);
+      NotificationService.handleMessage(_message);
+    } else {
+      print("No messame data");
+    }
+
+    ReceivedAction? receivedAction = await AwesomeNotifications()
+        .getInitialNotificationAction(removeFromActionEvents: false);
+    if (receivedAction != null) {
+      if (receivedAction.channelKey == 'call_channel') {
+        String? callType = receivedAction.payload!["callType"];
+        String? callId = receivedAction.payload!["callId"];
+        if (callType != null) {
+          if (callType == "audio") {
+            Get.toNamed(Routes.VOICE_CALL, arguments: {
+              'callId': callId,
+              'receiverId': FirebaseAuth.instance.currentUser!.uid,
+              'isCaller': false,
+            });
+          }
+          if (callType == "video") {
+            Get.toNamed(Routes.CHAT_CALL, arguments: {
+              'callId': callId,
+              'receiverId': FirebaseAuth.instance.currentUser!.uid,
+              'isCaller': false,
+            });
+          }
+        }
+      } else {
+        Get.toNamed(Routes.DIAL_PAD);
+      }
+    }
   }
 
   void gotoSettingScreen() {

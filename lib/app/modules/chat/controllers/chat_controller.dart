@@ -1,10 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_chat/app/modules/home/controllers/home_controller.dart';
-import 'package:flutter/widgets.dart';
+import 'package:dial_chat/app/utils/Dialog_helper.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:contacts_service/contacts_service.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'dart:io';
 
 class ChatController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
   final messages = <DocumentSnapshot>[].obs;
   final messageController = TextEditingController();
 
@@ -45,5 +53,82 @@ class ChatController extends GetxController {
       "chatId": Get.arguments[0]["chatID"],
     });
     messageController.clear();
+  }
+
+  Future<void> sendImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      // Upload image to storage and get URL
+      String imageUrl = await uploadImage(File(pickedFile.path));
+      sendMessage(imageUrl);
+    }
+  }
+
+  Future<void> sendDocument() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      // Upload document to storage and get URL
+      String documentUrl =
+          await uploadDocument(File(result.files.single.path!));
+      sendMessage(documentUrl);
+    }
+  }
+
+  Future<void> sendLocation() async {
+    // Position position = await Geolocator.getCurrentPosition(
+    //     desiredAccuracy: LocationAccuracy.high);
+    String locationMessage = "dadjsakjdaskd";
+    sendMessage(locationMessage);
+  }
+
+  Future<void> sendContact() async {
+    print("send contact called");
+    PermissionStatus permissionStatus = await _getContactPermission();
+    if (permissionStatus == PermissionStatus.granted) {
+      Iterable<Contact> contacts = await ContactsService.getContacts();
+      if (contacts.isNotEmpty) {
+        Contact contact = contacts.first;
+        String contactDetails =
+            'Contact: ${contact.displayName}, ${contact.phones!.isNotEmpty ? contact.phones!.first.value : 'No phone number'}';
+        sendMessage(contactDetails);
+      }
+    } else {
+      Get.snackbar("Permission Denied",
+          "Contacts permission is required to send contacts");
+    }
+  }
+
+  Future<String> uploadImage(File file) async {
+    DialogHelper.showLoading();
+    String fileName =
+        'images/${DateTime.now().millisecondsSinceEpoch}images.png';
+    TaskSnapshot taskSnapshot =
+        await _storage.ref().child(fileName).putFile(file);
+    String downloadUrl = await taskSnapshot.ref.getDownloadURL();
+    DialogHelper.hideDialog();
+    return downloadUrl;
+  }
+
+  Future<String> uploadDocument(File file) async {
+    DialogHelper.showLoading();
+    String fileName =
+        'documents/${DateTime.now().millisecondsSinceEpoch}_${file.path.split('/').last}';
+    TaskSnapshot taskSnapshot =
+        await _storage.ref().child(fileName).putFile(file);
+    String downloadUrl = await taskSnapshot.ref.getDownloadURL();
+    DialogHelper.hideDialog();
+    return downloadUrl;
+  }
+
+  Future<PermissionStatus> _getContactPermission() async {
+    PermissionStatus permission = await Permission.contacts.status;
+    if (permission != PermissionStatus.granted) {
+      Map<Permission, PermissionStatus> permissionStatus =
+          await [Permission.contacts].request();
+      return permissionStatus[Permission.contacts] ?? PermissionStatus.denied;
+    } else {
+      return permission;
+    }
   }
 }

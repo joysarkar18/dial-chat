@@ -162,13 +162,19 @@ class _MessageInputBarState extends State<MessageInputBar> {
                                         height: 20,
                                         width: 20,
                                       ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: Image.asset(
-                                          'assets/svg/gallery.png',
-                                          height: 20,
-                                          width: 20,
+                                      InkWell(
+                                        onTap: () {
+                                          Get.find<ChatController>()
+                                              .sendImage();
+                                        },
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 8.0),
+                                          child: Image.asset(
+                                            'assets/svg/gallery.png',
+                                            height: 20,
+                                            width: 20,
+                                          ),
                                         ),
                                       ),
                                       10.kwidthBox,
@@ -216,7 +222,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
         ),
         if (_showOptions)
           Container(
-            height: 300,
+            height: 130,
             color: context.white,
             child: GridView.count(
               shrinkWrap: true,
@@ -224,7 +230,9 @@ class _MessageInputBarState extends State<MessageInputBar> {
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.find<ChatController>().sendImage();
+                  },
                   icon: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
@@ -265,32 +273,6 @@ class _MessageInputBarState extends State<MessageInputBar> {
                             shape: BoxShape.circle, color: context.lightGrey_2),
                         child: Center(
                           child: Icon(
-                            Icons.camera_enhance,
-                            size: 40,
-                          ),
-                        ),
-                      ),
-                      2.kheightBox,
-                      Text(
-                        'Camera',
-                        style: AppTextStyles.inter12w400(color: context.black),
-                      )
-                    ],
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: context.lightGrey_2),
-                        child: Center(
-                          child: Icon(
                             Icons.my_location_sharp,
                             size: 40,
                           ),
@@ -305,7 +287,9 @@ class _MessageInputBarState extends State<MessageInputBar> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    Get.find<ChatController>().sendContact();
+                  },
                   icon: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -315,10 +299,10 @@ class _MessageInputBarState extends State<MessageInputBar> {
                         width: 60,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle, color: context.lightGrey_2),
-                        child: Center(
+                        child: const Center(
                           child: Icon(
                             Icons.contact_phone_sharp,
-                            size: 40,
+                            size: 35,
                           ),
                         ),
                       ),
@@ -331,7 +315,9 @@ class _MessageInputBarState extends State<MessageInputBar> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.find<ChatController>().sendDocument();
+                  },
                   icon: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -351,58 +337,6 @@ class _MessageInputBarState extends State<MessageInputBar> {
                       2.kheightBox,
                       Text(
                         'Document',
-                        style: AppTextStyles.inter12w400(color: context.black),
-                      )
-                    ],
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: context.lightGrey_2),
-                        child: Center(
-                          child: Icon(
-                            Icons.poll,
-                            size: 40,
-                          ),
-                        ),
-                      ),
-                      2.kheightBox,
-                      Text(
-                        'Poll',
-                        style: AppTextStyles.inter12w400(color: context.black),
-                      )
-                    ],
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: context.lightGrey_2),
-                        child: Center(
-                          child: Icon(
-                            Icons.currency_rupee,
-                            size: 40,
-                          ),
-                        ),
-                      ),
-                      2.kheightBox,
-                      Text(
-                        'Payment',
                         style: AppTextStyles.inter12w400(color: context.black),
                       )
                     ],

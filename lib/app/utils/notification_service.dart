@@ -71,7 +71,10 @@ class NotificationService {
         channelKey: 'call_channel',
         title: message.notification?.title ?? 'Incoming Call',
         body: message.notification?.body ?? 'You have a call',
-        payload: {'callId': callId, 'callType': callType},
+        payload: {
+          'callId': callId,
+          'callType': callType,
+        },
         autoDismissible: false,
         category: NotificationCategory.Call,
         fullScreenIntent: true,
@@ -96,7 +99,7 @@ class NotificationService {
     AwesomeNotifications().setListeners(
       onActionReceivedMethod: (ReceivedAction receivedAction) async {
         if (receivedAction.buttonKeyPressed == "ACCEPT_CALL") {
-          _handleMessage(message);
+          handleMessage(message);
         }
       },
       onNotificationCreatedMethod:
@@ -115,7 +118,7 @@ class NotificationService {
         .update({'fcmToken': token});
   }
 
-  static Future<void> _handleMessage(RemoteMessage message) async {
+  static Future<void> handleMessage(RemoteMessage message) async {
     String callId = message.data['callId'];
     String callType = message.data['callType'];
     print(callType);

@@ -1,5 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:dial_chat/app/modules/app_theme/controllers/app_theme_controller.dart';
+import 'package:dial_chat/app/utils/notification_service.dart';
 import 'package:dial_chat/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,13 +18,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  await Permission.notification.isDenied.then((value) {
-    if (value) {
-      Permission.notification.request();
-    }
-  });
+  await NotificationService.initialize();
 
-  AwesomeNotifications().initialize(
+  await AwesomeNotifications().initialize(
     null,
     [
       NotificationChannel(
