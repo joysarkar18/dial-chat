@@ -1,10 +1,11 @@
 class UserModel {
-  String email;
-  String imageUrl;
-  String name;
-  String phoneNo;
-  String uid;
-  bool online;
+  final String email;
+  final String imageUrl;
+  final String name;
+  final String phoneNo;
+  final String uid;
+  final bool online;
+
   UserModel({
     required this.email,
     required this.imageUrl,
@@ -14,27 +15,27 @@ class UserModel {
     required this.online,
   });
 
-  // Factory constructor to create a UserModel from JSON
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  // Static method to convert a map to a UserModel instance.
+  static UserModel fromJson(Map<String, dynamic> json) {
     return UserModel(
-      email: json['email'],
-      imageUrl: json['imageUrl'],
-      name: json['name'],
-      phoneNo: json['phoneNo'],
-      uid: json["uid"],
-      online: json["online"],
+      email: json['email'] as String,
+      imageUrl: json['imageUrl'] as String,
+      name: json['name'] as String,
+      phoneNo: json['phoneNo'] as String,
+      uid: json['uid'] as String,
+      online: json['online'] as bool,
     );
   }
 
-  // Method to convert a UserModel to JSON
-  Map<String, dynamic> toJson() {
+  // Static method to convert UserModel data to a Map.
+  static Map<String, dynamic> toJson(UserModel data) {
     return {
-      'email': email,
-      'imageUrl': imageUrl,
-      'name': name,
-      'phoneNo': phoneNo,
-      "uid": uid,
-      "online": online,
+      'email': data.email,
+      'imageUrl': data.imageUrl,
+      'name': data.name,
+      'phoneNo': data.phoneNo,
+      'uid': data.uid,
+      'online': data.online,
     };
   }
 }

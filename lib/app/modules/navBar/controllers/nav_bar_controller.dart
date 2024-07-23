@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_chat/app/modules/calls/views/calls_view.dart';
 import 'package:dial_chat/app/modules/home/views/home_view.dart';
 import 'package:dial_chat/app/modules/posts/views/posts_view.dart';
@@ -22,6 +25,8 @@ class NavBarController extends GetxController {
     BottomTab.calls: const CallsView(),
     BottomTab.posts: const PostsView(),
   };
+
+  Timer? _timer;
 
   @override
   Future<void> onInit() async {
@@ -87,5 +92,30 @@ class NavBarController extends GetxController {
             'Cannot show notifications without permission');
       }
     }
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    // Start the periodic timer
+    updateOnline();
+    _timer = Timer.periodic(Duration(minutes: 1), (timer) {
+      updateOnline();
+    });
+  }
+
+  void updateOnline() async {
+    print("online update called");
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .update({"lastUpdate": DateTime.now()});
+  }
+
+  @override
+  void onClose() {
+    // Cancel the timer when the controller is closed
+    _timer?.cancel();
+    super.onClose();
   }
 }

@@ -38,46 +38,54 @@ class GroupChatView extends GetView<GroupChatController> {
           },
         ),
         leadingWidth: 30,
-        title: Row(
-          children: [
-            Get.arguments[0]["groupImage"].toString().isEmpty
-                ? Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        color: context.secondaryBlue, shape: BoxShape.circle),
-                    child: Center(
-                      child: Icon(Icons.group),
-                    ),
-                  )
-                : CircleAvatar(
-                    backgroundImage:
-                        NetworkImage(Get.arguments[0]["groupImage"])),
-            SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  Get.arguments[0]["name"],
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: context.black),
-                ),
-                Obx(
-                  () => Text(
-                    controller.isLoading.value
-                        ? ""
-                        : "${controller.allMemberMap[Get.arguments[0]["userIds"][0]]!.name}, ${controller.allMemberMap[Get.arguments[0]["userIds"][1]]!.name} and more...",
+        title: InkWell(
+          onTap: () {
+            controller.gotoProfilePage(data: {
+              "groupImage": Get.arguments[0]["groupImage"].toString(),
+              "name": Get.arguments[0]["name"],
+            });
+          },
+          child: Row(
+            children: [
+              Get.arguments[0]["groupImage"].toString().isEmpty
+                  ? Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          color: context.secondaryBlue, shape: BoxShape.circle),
+                      child: Center(
+                        child: Icon(Icons.group),
+                      ),
+                    )
+                  : CircleAvatar(
+                      backgroundImage:
+                          NetworkImage(Get.arguments[0]["groupImage"])),
+              SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    Get.arguments[0]["name"],
                     style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w300,
-                        color: context.grey),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: context.black),
                   ),
-                ),
-              ],
-            )
-          ],
+                  Obx(
+                    () => Text(
+                      controller.isLoading.value
+                          ? ""
+                          : "${controller.allMemberMap[Get.arguments[0]["userIds"][0]]!.name}, ${controller.allMemberMap[Get.arguments[0]["userIds"][1]]!.name} and more...",
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
+                          color: context.grey),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
         actions: <Widget>[
           IconButton(

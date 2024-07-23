@@ -46,6 +46,10 @@ import '../modules/posts/bindings/posts_binding.dart';
 import '../modules/posts/views/posts_view.dart';
 import '../modules/privacy/bindings/privacy_binding.dart';
 import '../modules/privacy/views/privacy_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
+import '../modules/profileGroup/bindings/profile_group_binding.dart';
+import '../modules/profileGroup/views/profile_group_view.dart';
 import '../modules/selectContact/bindings/select_contact_binding.dart';
 import '../modules/selectContact/views/select_contact_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
@@ -232,6 +236,16 @@ class AppPages {
       name: _Paths.VOICE_CALLING,
       page: () => const VoiceCallingView(),
       binding: VoiceCallingBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_GROUP,
+      page: () => const ProfileGroupView(),
+      binding: ProfileGroupBinding(),
     ),
   ];
 }

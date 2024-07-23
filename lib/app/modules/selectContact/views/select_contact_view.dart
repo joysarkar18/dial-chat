@@ -133,7 +133,9 @@ class SelectContactView extends GetView<SelectContactController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  element.givenName.toString(),
+                                  element.givenName == null
+                                      ? element.phones![0].value!
+                                      : element.givenName!,
                                   style: AppTextStyles.inter15w500(
                                       color: context.black),
                                 ),

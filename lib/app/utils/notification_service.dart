@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:dial_chat/app/models/user_model.dart';
 import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -119,14 +119,25 @@ class NotificationService {
   }
 
   static Future<void> handleMessage(RemoteMessage message) async {
-    String callId = message.data['callId'];
-    String callType = message.data['callType'];
-    print(callType);
-    print(callType);
-    print(callType);
-    print(callType);
+    print("handel message called");
+    if (message.data['callType'] == "text") {
+      Get.toNamed(Routes.CHAT, arguments: [
+        {
+          "name": message.data['name'],
+          "chatID": message.data["chatId"],
+          "userId": message.data["senderId"]
+        }
+      ]);
+    } else {
+      String callId = message.data['callId'];
+      String callType = message.data['callType'];
+      print(callType);
+      print(callType);
+      print(callType);
+      print(callType);
 
-    _navigateToCallScreen(callId, callType);
+      _navigateToCallScreen(callId, callType);
+    }
   }
 
   static Future<void> _navigateToCallScreen(

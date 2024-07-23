@@ -4,6 +4,7 @@ import 'package:dial_chat/app/utils/notification_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class HomeController extends GetxController {
@@ -48,8 +49,21 @@ class HomeController extends GetxController {
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("chatRooms")
         .snapshots()
-        .map((querySnapshot) =>
-            querySnapshot.docs.map((e) => e.data()).toList());
+        .map((querySnapshot) {
+      // Convert the query snapshot to a list of maps
+      List<Map<String, dynamic>> chatRooms = querySnapshot.docs
+          .map((e) => e.data() as Map<String, dynamic>)
+          .toList();
+
+      // Sort the list based on the 'lastUpdate' timestamp in descending order
+      chatRooms.sort((a, b) {
+        Timestamp aTimestamp = a['lastUpdate'] as Timestamp;
+        Timestamp bTimestamp = b['lastUpdate'] as Timestamp;
+        return bTimestamp.compareTo(aTimestamp);
+      });
+
+      return chatRooms;
+    });
   }
 
   // Request permission and fetch contacts (unchanged)
@@ -77,4 +91,33 @@ class HomeController extends GetxController {
   // Increment method (unchanged)
   final count = 0.obs;
   void increment() => count.value++;
+// Import the intl package
+
+  String formatTimestamp(Timestamp timestamp) {
+    DateTime dateTime = timestamp.toDate();
+    DateTime now = DateTime.now();
+    DateTime tomorrow = DateTime(now.year, now.month, now.day + 1);
+
+    // Custom formatter for hours without leading zero
+    String formatTime(DateTime dateTime) {
+      final formatter =
+          DateFormat('h:mm a'); // Use 'h' for hour without leading zero
+      return formatter.format(dateTime);
+    }
+
+    // Check if the dateTime is today
+    if (DateFormat('yyyyMMdd').format(dateTime) ==
+        DateFormat('yyyyMMdd').format(now)) {
+      return formatTime(dateTime);
+    }
+    // Check if the dateTime is tomorrow
+    else if (DateFormat('yyyyMMdd').format(dateTime) ==
+        DateFormat('yyyyMMdd').format(tomorrow)) {
+      return "Tomorrow, ${formatTime(dateTime)}";
+    }
+    // Otherwise, return the date in MM/dd/yy format
+    else {
+      return "${DateFormat('MM/dd/yy').format(dateTime)}, ${formatTime(dateTime)}";
+    }
+  }
 }

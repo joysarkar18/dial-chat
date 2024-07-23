@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dial_chat/app/models/user_model.dart';
 import 'package:dial_chat/app/modules/home/controllers/home_controller.dart';
+import 'package:dial_chat/app/routes/app_pages.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,5 +68,9 @@ class GroupChatController extends GetxController {
     }
 
     messageController.clear();
+  }
+
+  void gotoProfilePage({required Map<String, dynamic> data}) {
+    Get.toNamed(Routes.PROFILE_GROUP, arguments: {"data": data});
   }
 }

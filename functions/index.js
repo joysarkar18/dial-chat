@@ -126,3 +126,70 @@ exports.sendVoiceNotification = functions.firestore
                 return;
             });
     });
+
+
+    exports.sendNotification = functions.firestore
+    .document('chats/{chatID}/messages/{messageID}')
+    .onCreate(async (snapshot, context) => {
+      const message = snapshot.data();
+      if (!message) {
+        console.error('No message data found in the snapshot.');
+        return;
+      }
+  
+      const senderId = message.sendTo;
+      const recipientId = message.senderId;
+      
+      
+      const chatID = context.params.chatID;
+  
+      if (!senderId || !recipientId) {
+        console.error('Sender ID or Recipient ID is missing.');
+        return;
+      }
+  
+      try {
+        // Retrieve the sender's details
+        const senderDoc = await admin.firestore().collection('users').doc(senderId).get();
+        if (!senderDoc.exists) {
+          console.error(`Sender document with ID ${senderId} does not exist.`);
+          return;
+        }
+  
+        // Retrieve the recipient's details
+        const recipientDoc = await admin.firestore().collection('users').doc(recipientId).get();
+        if (!recipientDoc.exists) {
+          console.error(`Recipient document with ID ${recipientId} does not exist.`);
+          return;
+        }
+  
+        const token = recipientDoc.data().fcmToken;
+        const senderName = senderDoc.data().name;
+  
+        if (!token) {
+          console.error(`FCM token for recipient with ID ${recipientId} not found.`);
+          return;
+        }
+  
+        const payload = {
+          notification: {
+            title: `Message from ${senderName}`,
+            body: message.text,
+          },
+          data: {
+            chatId: chatID,
+            senderId:senderId,
+            name:senderDoc.data().name,
+            click_action: "FLUTTER_NOTIFICATION_CLICK",
+            callType:"text",
+
+          },
+        };
+  
+        await admin.messaging().sendToDevice(token, payload);
+        console.log('Notification sent successfully');
+      } catch (error) {
+        console.error('Error retrieving user details or sending notification:', error);
+      }
+    });
+  

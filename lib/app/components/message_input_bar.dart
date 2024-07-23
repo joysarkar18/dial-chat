@@ -134,7 +134,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
                                 width: 62.w,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
-                                      right: 8.0, left: 10.0),
+                                      right: 8.0, left: 20.0),
                                   child: TextField(
                                     focusNode: _focusNode,
                                     controller: widget.isGroup
@@ -157,19 +157,13 @@ class _MessageInputBarState extends State<MessageInputBar> {
                                 children: [
                                   Row(
                                     children: [
-                                      Image.asset(
-                                        'assets/svg/happy.png',
-                                        height: 20,
-                                        width: 20,
-                                      ),
                                       InkWell(
                                         onTap: () {
                                           Get.find<ChatController>()
                                               .sendImage();
                                         },
                                         child: Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 8.0),
+                                          padding: EdgeInsets.only(left: 16.kw),
                                           child: Image.asset(
                                             'assets/svg/gallery.png',
                                             height: 20,
@@ -197,7 +191,13 @@ class _MessageInputBarState extends State<MessageInputBar> {
                       // mic action
                     }
                   },
-                  child: InkWell(
+                  child: GestureDetector(
+                    onLongPress: () async {
+                      await Get.find<ChatController>().startRecording();
+                    },
+                    onLongPressUp: () async {
+                      await Get.find<ChatController>().stopRecording();
+                    },
                     onTap: () {
                       print("onSend click");
                       widget.onSend();
@@ -223,7 +223,7 @@ class _MessageInputBarState extends State<MessageInputBar> {
         if (_showOptions)
           Container(
             height: 130,
-            color: context.white,
+            color: context.lightGrey_2,
             child: GridView.count(
               shrinkWrap: true,
               crossAxisCount: 4,
@@ -247,7 +247,6 @@ class _MessageInputBarState extends State<MessageInputBar> {
                             'assets/svg/gallery.png',
                             height: 40,
                             width: 40,
-                            color: Colors.black,
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -261,7 +260,9 @@ class _MessageInputBarState extends State<MessageInputBar> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.find<ChatController>().sendLocation();
+                  },
                   icon: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
